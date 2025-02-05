@@ -29,11 +29,25 @@ strengthTracker a pour but de proposer un suivi complet et personnalisé des per
    ```bash
    git clone https://github.com/Al-vallon/strengthTracker.git
    ```
-2. Accédez au dossier du projet :
+2. Construisez et démarrez les conteneurs Docker :
    ```bash
-   cd strengthTracker
+   docker-compose up --build
    ```
-3. Installez les dépendances :
+2.1 Commande Python dans le terminal du docker django_api
+   ```bash
+      python manage.py makemigrations
+   ```
+   ```bash
+      python manage.py migrate
+   ```
+   ```bash
+      python manage.py createsuperuser
+   ```
+3. Accédez au dossier du projet :
+   ```bash
+   cd strengthTracker/frontend
+   ```
+4. Installez les dépendances :
    ```bash
    npm install
    ```
