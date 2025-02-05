@@ -1,5 +1,5 @@
 
-```markdown
+
 # strengthTracker
 
 ## Description
@@ -62,4 +62,3 @@ yarn test
 ```
 
 
-```
