@@ -6,6 +6,7 @@
 strengthTracker est une application permettant le suivi des performances des sportifs. Elle offre des fonctionnalités pour enregistrer, visualiser et analyser les progrès dans divers exercices et activités physiques.
 
 ## Stack Utilisée
+- ![Django REST framework](https://img.shields.io/badge/Django%20REST%20framework-092E20?style=for-the-badge&logo=django&logoColor=white) **Django REST framework** : Un framework puissant et flexible pour construire des API Web.
 - ![React](https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB) **React** : Une bibliothèque JavaScript pour construire des interfaces utilisateur.
 - ![TypeScript](https://img.shields.io/badge/TypeScript-007ACC?style=for-the-badge&logo=typescript&logoColor=white) **TypeScript** : Un sur-ensemble de JavaScript qui ajoute des types statiques.
 - ![Vite](https://img.shields.io/badge/Vite-646CFF?style=for-the-badge&logo=vite&logoColor=white) **Vite** : Un build tool qui améliore la vitesse de développement.
