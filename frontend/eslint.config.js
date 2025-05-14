@@ -1,12 +1,19 @@
 // frontend/eslint.config.js
+import plugin from '@typescript-eslint/eslint-plugin';
+import parser from '@typescript-eslint/parser';
+
 export default [
     {
-        files: ['src/**/*.{js,ts,jsx,tsx}'],
+        files: ['src/**/*.{ts,tsx}'],
         languageOptions: {
+        parser,
         parserOptions: {
-            ecmaVersion: 'latest',
-            sourceType: 'module',
+            project: ['./tsconfig.json'],
+            tsconfigRootDir: process.cwd(),
         },
+        },
+        plugins: {
+        '@typescript-eslint': plugin,
         },
         rules: {
         semi: ['error', 'always'],
