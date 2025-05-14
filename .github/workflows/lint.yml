@@ -17,8 +17,8 @@ jobs:
           java-version: '21'
           distribution: 'temurin'
 
-      - name: Build and run Checkstyle
-        run: mvn checkstyle:check
+      - name: Build and run spotless
+        run: mvn spotless:apply
         working-directory: ./backend
 
       - name: Set up Node.js
