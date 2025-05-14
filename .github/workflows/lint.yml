@@ -1,0 +1,35 @@
+name: Lint Code
+# This workflow runs ESLint and Checkstyle to ensure code quality.
+
+on: [push, pull_request]
+
+jobs:
+  lint:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Set up Java 21
+        uses: actions/setup-java@v4
+        with:
+          java-version: '21'
+          distribution: 'temurin'
+
+      - name: Build and run Checkstyle
+        run: mvn checkstyle:check
+        working-directory: ./backend
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '22'
+
+      - name: Install dependencies
+        run: npm install
+        working-directory: ./frontend
+
+      - name: Run ESLint
+        run: npm run lint
+        working-directory: ./frontend
