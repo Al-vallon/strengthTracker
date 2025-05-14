@@ -1,0 +1,57 @@
+services:
+  frontend:
+    container_name: st-frontend
+    build:
+      context: ./frontend
+      dockerfile: frontend.dockerfile
+    ports:
+      - "4200:4200"
+    volumes:
+      - ./frontend/src:/app/src
+      - /app/node_modules
+    restart: always
+    depends_on:
+      - backend
+    networks:
+      - st-network
+
+  backend:
+    container_name: st-backend
+    build:
+      context: ./backend
+      dockerfile: backend.dockerfile
+    ports:
+      - "8080:8080"
+    environment:
+      - SPRING_PROFILES_ACTIVE=dev
+      - DB_URL=${DB_URL}
+      - DB_USERNAME=${DB_USERNAME}
+      - DB_PASSWORD=${DB_PASSWORD}
+    volumes:
+      - ./backend/src:/app/src
+      - /app/node_modules
+    restart: always
+    depends_on:
+      - db
+    networks:
+      - st-network
+  db:
+    container_name: st-db
+    image: postgres:latest
+    environment:
+      POSTGRES_USER: ${DB_USERNAME}
+      POSTGRES_PASSWORD: ${DB_PASSWORD}
+      POSTGRES_DB: ${DB_NAME}
+    ports:
+      - "${DB_PORT}:5432"
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+    networks:
+      - st-network
+
+volumes:
+  pgdata:
+    name: st-pgdata
+
+networks:
+  st-network:
