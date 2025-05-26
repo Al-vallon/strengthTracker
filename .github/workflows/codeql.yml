@@ -20,7 +20,7 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        language: [ 'java', 'typescript' ] # adapte si tu n'utilises qu'un des deux
+        language: [ 'java', 'typescript' ]
 
     steps:
       - name: Checkout repository
@@ -31,8 +31,17 @@ jobs:
         with:
           languages: ${{ matrix.language }}
 
-      - name: Autobuild
-        uses: github/codeql-action/autobuild@v3
+      - name: Build Java backend (only if language is java)
+        if: matrix.language == 'java'
+        working-directory: ./backend
+        run: mvn clean install -DskipTests
+
+      - name: Build Angular frontend (only if language is typescript)
+        if: matrix.language == 'typescript'
+        working-directory: ./frontend
+        run: |
+          npm ci
+          npm run build
 
       - name: Perform CodeQL Analysis
         uses: github/codeql-action/analyze@v3
