@@ -6,7 +6,7 @@ on:
   pull_request:
     branches: [main]
   schedule:
-    - cron: '0 0 * * 0' 
+    - cron: '0 0 * * 0'  # Hebdomadaire (optionnel)
 
 jobs:
   analyze:
@@ -20,11 +20,13 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        language: [ 'java', 'typescript' ]
+        language: [ 'java', 'typescript' ]  # Angular = TypeScript
+
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
 
+      # Installer Java uniquement pour Java
       - name: Set up Java 21
         if: matrix.language == 'java'
         uses: actions/setup-java@v4
@@ -37,11 +39,19 @@ jobs:
         with:
           languages: ${{ matrix.language }}
 
+      # Build manuel nécessaire pour Java
       - name: Build backend
         if: matrix.language == 'java'
         working-directory: backend
-        run: mvn clean install -DskipTests
+        run: mvn clean package -DskipTests
+
+      # Build manuel pour Angular (optionnel, mais utile pour que le code soit complet)
+      - name: Build frontend
+        if: matrix.language == 'typescript'
+        working-directory: frontend
+        run: |
+          npm ci
+          npm run build
 
       - name: Perform CodeQL Analysis
         uses: github/codeql-action/analyze@v3
-
