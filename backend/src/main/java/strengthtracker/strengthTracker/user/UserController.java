@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.web.bind.annotation.*;
+import strengthtracker.strengthTracker.config.JwtUtil;
 import strengthtracker.strengthTracker.user.dto.LoginRequestDto;
 
 // import strengthtracker.strengthTracker.user.mapper.UserMapper;
@@ -16,6 +17,7 @@ import strengthtracker.strengthTracker.user.dto.LoginRequestDto;
 public class UserController {
   @Autowired private UserService userService;
   @Autowired private PasswordEncoder passwordEncoder;
+  @Autowired private JwtUtil jwtUtil;
 
   // @Autowired private UserMapper userMapper;
 
@@ -48,7 +50,8 @@ public class UserController {
   public ResponseEntity<?> login(@Valid @RequestBody LoginRequestDto loginRequest) {
     User user = userService.findByEmail(loginRequest.getEmail());
     if (user != null && passwordEncoder.matches(loginRequest.getPassword(), user.getPassword())) {
-      return ResponseEntity.ok(Map.of("token", "futur token"));
+      String token = jwtUtil.generateToken(user.getEmail());
+      return ResponseEntity.ok(Map.of("token", token));
     }
     return ResponseEntity.status(401).body("Email ou mot de passe invalide");
   }
