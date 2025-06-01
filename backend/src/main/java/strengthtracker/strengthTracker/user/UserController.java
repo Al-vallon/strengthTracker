@@ -55,4 +55,14 @@ public class UserController {
     }
     return ResponseEntity.status(401).body("Email ou mot de passe invalide");
   }
+
+  @PostMapping("/register")
+  public ResponseEntity<?> register(@Valid @RequestBody User user) {
+    if (userService.findByEmail(user.getEmail()) != null) {
+      return ResponseEntity.badRequest().body("Email déjà utilisé");
+    }
+    
+    User created = userService.createUser(user);
+    return ResponseEntity.ok(created);
+  }
 }

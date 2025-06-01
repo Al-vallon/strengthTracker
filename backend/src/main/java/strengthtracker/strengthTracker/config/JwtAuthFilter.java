@@ -10,34 +10,55 @@ import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.web.authentication.WebAuthenticationDetailsSource;
 import org.springframework.stereotype.Component;
 import org.springframework.web.filter.OncePerRequestFilter;
+
+import io.jsonwebtoken.Claims;
+import io.jsonwebtoken.lang.Collections;
+
 import java.io.IOException;
-import java.util.Collections;
 
 @Component
 public class JwtAuthFilter extends OncePerRequestFilter {
+
     @Autowired
     private JwtUtil jwtUtil;
 
     @Override
-    protected void doFilterInternal(@org.springframework.lang.NonNull HttpServletRequest request, @org.springframework.lang.NonNull HttpServletResponse response, @org.springframework.lang.NonNull FilterChain filterChain)
-            throws ServletException, IOException {
+    protected void doFilterInternal(
+            @org.springframework.lang.NonNull HttpServletRequest request,
+            @org.springframework.lang.NonNull HttpServletResponse response,
+            @org.springframework.lang.NonNull FilterChain filterChain) throws ServletException, IOException {
         String authHeader = request.getHeader("Authorization");
         String token = null;
         String username = null;
 
         if (authHeader != null && authHeader.startsWith("Bearer ")) {
             token = authHeader.substring(7);
+            System.out.println("JwtAuthFilter called for: " + request.getRequestURI());
+            System.out.println("Authorization header: " + authHeader);
             if (jwtUtil.validateToken(token)) {
-                username = jwtUtil.getSubject(token);
+                Claims claims = jwtUtil.getClaims(token);
+                username = claims.getSubject();
+            } else {
+                response.sendError(HttpServletResponse.SC_UNAUTHORIZED, "Token invalide ou expiré");
+                return;
             }
+        } else if (authHeader != null) {
+            response.sendError(HttpServletResponse.SC_BAD_REQUEST, "Format d'en-tête Authorization invalide");
+            return;
         }
 
+        // Authentifie l'utilisateur si le contexte est vide
         if (username != null && SecurityContextHolder.getContext().getAuthentication() == null) {
-            UsernamePasswordAuthenticationToken authToken = new UsernamePasswordAuthenticationToken(
-                    username, null, Collections.emptyList());
+            UsernamePasswordAuthenticationToken authToken =
+                new UsernamePasswordAuthenticationToken(
+                    username,
+                    null,
+                    Collections.emptyList()
+                );
             authToken.setDetails(new WebAuthenticationDetailsSource().buildDetails(request));
             SecurityContextHolder.getContext().setAuthentication(authToken);
         }
+
         filterChain.doFilter(request, response);
     }
 }

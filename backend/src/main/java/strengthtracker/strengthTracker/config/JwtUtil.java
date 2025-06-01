@@ -21,7 +21,6 @@ public class JwtUtil {
     private SecretKey getSigningKey() {
         return Keys.hmacShaKeyFor(jwtSecret.getBytes());
     }
-    
 
     public String generateToken(String subject) {
         return Jwts.builder()
@@ -52,5 +51,13 @@ public class JwtUtil {
         } catch (JwtException | IllegalArgumentException e) {
             return false;
         }
+    }
+
+    public Claims getClaims(String token) {
+        return Jwts.parser()
+                .verifyWith(getSigningKey())
+                .build()
+                .parseSignedClaims(token)
+                .getPayload();
     }
 }
