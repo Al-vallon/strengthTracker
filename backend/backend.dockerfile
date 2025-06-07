@@ -1,16 +1,18 @@
 # Build stage
-FROM maven:3.9.9-amazoncorretto-21-alpine AS build
+FROM maven:latest AS build
 
 WORKDIR /app
-COPY pom.xml .
-COPY src ./src
+# Copy from backend directory since Docker context is at project root
+COPY backend/pom.xml .
+COPY backend/src ./src
 RUN mvn package -DskipTests
 
 # Run stage
-FROM amazoncorretto:21-alpine
+FROM openjdk:21-jdk
 WORKDIR /app
 COPY --from=build /app/target/strengthTracker-0.0.1-SNAPSHOT.jar app.jar
-COPY .env .
+
+#COPY .env .
 
 EXPOSE 8080
 ENTRYPOINT ["java", "-jar", "app.jar"]

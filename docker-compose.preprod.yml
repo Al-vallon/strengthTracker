@@ -1,0 +1,54 @@
+services:
+  frontend:
+    container_name: strengthTracker-front-preprod
+    build:
+      context: ./frontend
+      dockerfile: frontend.dockerfile # Consider a production-ready Dockerfile (see step 4)
+      # args: # If your frontend Dockerfile supports build args for API URLs
+      #   API_URL: http://backend-preprod:8080/api 
+    ports:
+      - "4201:80" # Assuming frontend serves on port 80 in container for prod-like setup
+    restart: always
+    depends_on:
+      - backend
+    networks:
+      - strengthTracker-preprod-network
+
+  backend:
+    container_name: strengthTracker-back-preprod
+    build:
+      context: ./backend
+      dockerfile: backend.dockerfile
+    ports:
+      - "8081:8080"
+    env_file:
+      - .env.preprod # Load preprod environment variables
+    environment:
+      - SPRING_PROFILES_ACTIVE=preprod # Activate preprod Spring profile
+    # Remove source code volume mounts for preprod/prod
+    # volumes:
+    #   - ./backend/src:/app/src 
+    restart: always
+    depends_on:
+      - db
+    networks:
+      - strengthTracker-preprod-network
+
+  db:
+    container_name: strengthTracker-db-preprod
+    image: postgres:latest
+    env_file:
+      - .env.preprod # Load preprod environment variables for DB
+    ports:
+      - "${DB_PORT}:5432" # DB_PORT will be from .env.preprod
+    volumes:
+      - strengthTracker-pgdata-preprod:/var/lib/postgresql/data
+    networks:
+      - strengthTracker-preprod-network
+
+volumes:
+  strengthTracker-pgdata-preprod:
+    name: strengthTracker-pgdata-preprod
+
+networks:
+  strengthTracker-preprod-network:

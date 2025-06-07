@@ -1,0 +1,66 @@
+# Git
+.git
+.gitignore
+
+# Environment files
+.env
+.env.*
+.env.local
+.env.development
+.env.test
+.env.production
+.env.preprod
+.env.prod
+.env.dev
+
+# Node modules
+frontend/node_modules/
+node_modules/
+npm-debug.log
+yarn-debug.log
+yarn-error.log
+
+# IDE
+.idea/
+*.iml
+.vscode/
+*.swp
+*.swo
+
+# Logs
+*.log
+logs/
+
+# Build output
+frontend/dist/
+frontend/build/
+backend/target/
+dist/
+build/
+tmp/
+out-tsc/
+
+# Temporary files
+*.tmp
+*.temp
+.DS_Store
+
+# Angular specific
+frontend/.angular/
+frontend/coverage/
+frontend/e2e/*.js
+frontend/e2e/*.map
+
+# Maven specific
+backend/.mvn/
+backend/mvnw
+backend/mvnw.cmd
+backend/HELP.md
+
+# Docker files (but keep dockerfiles)
+!*.dockerfile
+
+# Documentation
+docs/
+README.md
+LICENSE

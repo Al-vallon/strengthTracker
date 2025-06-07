@@ -1,0 +1,51 @@
+version: '3.8'
+
+services:
+  frontend:
+    container_name: strengthTracker-front-prod
+    image: nanandre/strengthtracker-frontend:latest
+    ports:
+      - "4201:80"
+    restart: always
+    depends_on:
+      - backend
+    networks:
+      - strengthTracker-prod-network
+  backend:
+    container_name: strengthTracker-back-prod
+    image: nanandre/strengthtracker-backend:latest
+    ports:
+      - "8081:8080"
+    env_file:
+      - .env.prod
+    environment:
+      - SPRING_PROFILES_ACTIVE=prod
+    restart: always
+    depends_on:
+      - db
+    networks:
+      - strengthTracker-prod-network
+
+  db:
+    container_name: strengthTracker-db-prod
+    image: postgres:17
+    env_file:
+      - .env.prod
+    ports:
+      - "${DB_PORT}:5432"
+    volumes:
+      - strengthTracker-pgdata-prod:/var/lib/postgresql/data
+    networks:
+      - strengthTracker-prod-network
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U ${POSTGRES_USER}"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+
+networks:
+  strengthTracker-prod-network:
+    driver: bridge
+
+volumes:
+  strengthTracker-pgdata-prod:

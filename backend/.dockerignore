@@ -24,6 +24,10 @@ logs/
 .env.development
 .env.test
 .env.production
+.env
+.env.preprod
+.env.prod
+.env.dev
 
 # Build output
 dist/
