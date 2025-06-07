@@ -1,6 +1,6 @@
 services:
   frontend:
-    container_name: st-frontend
+    container_name: strengthTracker-front-dev
     build:
       context: ./frontend
       dockerfile: frontend.dockerfile
@@ -13,10 +13,10 @@ services:
     depends_on:
       - backend
     networks:
-      - st-network
+      - strengthTracker-network
 
   backend:
-    container_name: st-backend
+    container_name: strengthTracker-back-dev
     build:
       context: ./backend
       dockerfile: backend.dockerfile
@@ -37,9 +37,9 @@ services:
     depends_on:
       - db
     networks:
-      - st-network
+      - strengthTracker-network
   db:
-    container_name: st-db
+    container_name: strengthTracker-db-dev
     image: postgres:latest
     environment:
       POSTGRES_USER: ${DB_USERNAME}
@@ -50,11 +50,11 @@ services:
     volumes:
       - pgdata:/var/lib/postgresql/data
     networks:
-      - st-network
+      - strengthTracker-network
 
 volumes:
   pgdata:
-    name: st-pgdata
+    name: strengthTracker-pgdata
 
 networks:
-  st-network:
+  strengthTracker-network:
