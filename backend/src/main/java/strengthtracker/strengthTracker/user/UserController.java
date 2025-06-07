@@ -61,7 +61,7 @@ public class UserController {
     if (userService.findByEmail(user.getEmail()) != null) {
       return ResponseEntity.badRequest().body("Email déjà utilisé");
     }
-    
+
     User created = userService.createUser(user);
     return ResponseEntity.ok(created);
   }
