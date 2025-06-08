@@ -35,7 +35,7 @@ A comprehensive fitness tracking application built with Angular and Spring Boot.
 
 1. **Clone the repository**
    ```bash
-   git clone [repository-url]
+   git clone https://github.com/Al-vallon/strengthTracker.git
    cd strengthTracker
    ```
 
