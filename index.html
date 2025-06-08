@@ -1,0 +1,1911 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <title>StrengthTracker Documentation</title>
+  <style>
+/* Add your custom styles here or ensure  is replaced by the template engine */
+  </style>
+  <link rel="stylesheet" href="style.css" />
+  <!--[if lt IE 9]>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js"></script>
+  <![endif]-->
+</head>
+<body>
+<header id="title-block-header">
+<div style="text-align: center; margin-bottom: 2em;">
+  <h1 style="color: #2767e5; font-size: 2.5em; margin-bottom: 0.5em;">🏋️ StrengthTracker</h1>
+  <h2 style="color: #428bca; font-size: 1.5em; margin-bottom: 0.5em;">StrengthTracker
+Documentation</h2>
+</div>
+</header>
+<nav id="TOC" role="doc-toc">
+<ul>
+<li><a href="#strengthtracker-documentation"
+id="toc-strengthtracker-documentation">StrengthTracker
+Documentation</a></li>
+<li><a href="#documentation-overview"
+id="toc-documentation-overview">Documentation Overview</a>
+<ul>
+<li><a href="#documentation-structure"
+id="toc-documentation-structure">📁 Documentation Structure</a></li>
+<li><a href="#automated-documentation-generation"
+id="toc-automated-documentation-generation">🔄 Automated Documentation
+Generation</a>
+<ul>
+<li><a href="#pdf-documents" id="toc-pdf-documents">PDF
+Documents</a></li>
+<li><a href="#html-documentation" id="toc-html-documentation">HTML
+Documentation</a></li>
+<li><a href="#triggers" id="toc-triggers">Triggers</a></li>
+</ul></li>
+<li><a href="#generated-output" id="toc-generated-output">📊 Generated
+Output</a>
+<ul>
+<li><a href="#pdf-features" id="toc-pdf-features">PDF Features</a></li>
+<li><a href="#html-features" id="toc-html-features">HTML
+Features</a></li>
+</ul></li>
+<li><a href="#usage" id="toc-usage">🚀 Usage</a>
+<ul>
+<li><a href="#viewing-documentation"
+id="toc-viewing-documentation">Viewing Documentation</a></li>
+<li><a href="#updating-documentation"
+id="toc-updating-documentation">Updating Documentation</a></li>
+<li><a href="#adding-new-documentation"
+id="toc-adding-new-documentation">Adding New Documentation</a></li>
+</ul></li>
+<li><a href="#customization" id="toc-customization">🎨 Customization</a>
+<ul>
+<li><a href="#styling" id="toc-styling">Styling</a></li>
+<li><a href="#workflow-configuration"
+id="toc-workflow-configuration">Workflow Configuration</a></li>
+</ul></li>
+<li><a href="#best-practices" id="toc-best-practices">📋 Best
+Practices</a>
+<ul>
+<li><a href="#writing-documentation"
+id="toc-writing-documentation">Writing Documentation</a></li>
+<li><a href="#file-organization" id="toc-file-organization">File
+Organization</a></li>
+<li><a href="#version-control" id="toc-version-control">Version
+Control</a></li>
+</ul></li>
+<li><a href="#troubleshooting" id="toc-troubleshooting">🔧
+Troubleshooting</a>
+<ul>
+<li><a href="#common-issues" id="toc-common-issues">Common
+Issues</a></li>
+<li><a href="#getting-help" id="toc-getting-help">Getting Help</a></li>
+</ul></li>
+<li><a href="#metrics-and-monitoring" id="toc-metrics-and-monitoring">📈
+Metrics and Monitoring</a>
+<ul>
+<li><a href="#documentation-quality"
+id="toc-documentation-quality">Documentation Quality</a></li>
+<li><a href="#workflow-performance"
+id="toc-workflow-performance">Workflow Performance</a></li>
+</ul></li>
+<li><a href="#maintenance" id="toc-maintenance">🔄 Maintenance</a>
+<ul>
+<li><a href="#regular-tasks" id="toc-regular-tasks">Regular
+Tasks</a></li>
+<li><a href="#tool-updates" id="toc-tool-updates">Tool Updates</a></li>
+</ul></li>
+</ul></li>
+<li><a href="#github-actions-workflows"
+id="toc-github-actions-workflows">GitHub Actions Workflows</a>
+<ul>
+<li><a href="#overview" id="toc-overview">Overview</a></li>
+<li><a href="#workflows" id="toc-workflows">Workflows</a>
+<ul>
+<li><a href="#build-save-artifacts" id="toc-build-save-artifacts">Build
+&amp; Save Artifacts</a></li>
+<li><a href="#codeql-analysis" id="toc-codeql-analysis">CodeQL
+Analysis</a></li>
+<li><a href="#commit-lint" id="toc-commit-lint">Commit Lint</a></li>
+<li><a href="#code-linting" id="toc-code-linting">Code Linting</a></li>
+</ul></li>
+<li><a href="#workflow-dependencies"
+id="toc-workflow-dependencies">Workflow Dependencies</a></li>
+<li><a href="#best-practices-1" id="toc-best-practices-1">Best
+Practices</a></li>
+<li><a href="#maintenance-1" id="toc-maintenance-1">Maintenance</a></li>
+</ul></li>
+<li><a href="#buildnsave-workflow"
+id="toc-buildnsave-workflow">Buildnsave Workflow</a>
+<ul>
+<li><a href="#overview-1" id="toc-overview-1">Overview</a></li>
+<li><a href="#configuration" id="toc-configuration">Configuration</a>
+<ul>
+<li><a href="#triggers-1" id="toc-triggers-1">Triggers</a></li>
+<li><a href="#jobs" id="toc-jobs">Jobs</a></li>
+</ul></li>
+<li><a href="#workflow-file" id="toc-workflow-file">Workflow
+File</a></li>
+<li><a href="#artifacts" id="toc-artifacts">Artifacts</a>
+<ul>
+<li><a href="#backend-artifact" id="toc-backend-artifact">Backend
+Artifact</a></li>
+<li><a href="#frontend-artifact" id="toc-frontend-artifact">Frontend
+Artifact</a></li>
+</ul></li>
+<li><a href="#key-features" id="toc-key-features">Key Features</a>
+<ul>
+<li><a href="#parallel-execution" id="toc-parallel-execution">Parallel
+Execution</a></li>
+<li><a href="#container-usage" id="toc-container-usage">Container
+Usage</a></li>
+<li><a href="#clean-builds" id="toc-clean-builds">Clean Builds</a></li>
+<li><a href="#artifact-management" id="toc-artifact-management">Artifact
+Management</a></li>
+</ul></li>
+<li><a href="#best-practices-2" id="toc-best-practices-2">Best
+Practices</a></li>
+<li><a href="#troubleshooting-1"
+id="toc-troubleshooting-1">Troubleshooting</a>
+<ul>
+<li><a href="#common-issues-1" id="toc-common-issues-1">Common
+Issues</a></li>
+</ul></li>
+<li><a href="#monitoring" id="toc-monitoring">Monitoring</a></li>
+</ul></li>
+<li><a href="#codeql-workflow" id="toc-codeql-workflow">Codeql
+Workflow</a>
+<ul>
+<li><a href="#overview-2" id="toc-overview-2">Overview</a></li>
+<li><a href="#configuration-1"
+id="toc-configuration-1">Configuration</a>
+<ul>
+<li><a href="#triggers-2" id="toc-triggers-2">Triggers</a></li>
+<li><a href="#permissions" id="toc-permissions">Permissions</a></li>
+</ul></li>
+<li><a href="#job-configuration" id="toc-job-configuration">Job
+Configuration</a>
+<ul>
+<li><a href="#matrix-strategy" id="toc-matrix-strategy">Matrix
+Strategy</a></li>
+<li><a href="#runtime-environment" id="toc-runtime-environment">Runtime
+Environment</a></li>
+</ul></li>
+<li><a href="#workflow-steps" id="toc-workflow-steps">Workflow Steps</a>
+<ul>
+<li><a href="#repository-checkout" id="toc-repository-checkout">1.
+Repository Checkout</a></li>
+<li><a href="#java-environment-setup-conditional"
+id="toc-java-environment-setup-conditional">2. Java Environment Setup
+(Conditional)</a></li>
+<li><a href="#codeql-initialization" id="toc-codeql-initialization">3.
+CodeQL Initialization</a></li>
+<li><a href="#backend-build-java" id="toc-backend-build-java">4. Backend
+Build (Java)</a></li>
+<li><a href="#frontend-build-typescript"
+id="toc-frontend-build-typescript">5. Frontend Build
+(TypeScript)</a></li>
+<li><a href="#codeql-analysis-1" id="toc-codeql-analysis-1">6. CodeQL
+Analysis</a></li>
+</ul></li>
+<li><a href="#workflow-file-1" id="toc-workflow-file-1">Workflow
+File</a></li>
+<li><a href="#security-analysis-coverage"
+id="toc-security-analysis-coverage">Security Analysis Coverage</a>
+<ul>
+<li><a href="#java-analysis" id="toc-java-analysis">Java
+Analysis</a></li>
+<li><a href="#typescript-analysis"
+id="toc-typescript-analysis">TypeScript Analysis</a></li>
+</ul></li>
+<li><a href="#key-features-1" id="toc-key-features-1">Key Features</a>
+<ul>
+<li><a href="#comprehensive-coverage"
+id="toc-comprehensive-coverage">Comprehensive Coverage</a></li>
+<li><a href="#automated-scheduling"
+id="toc-automated-scheduling">Automated Scheduling</a></li>
+<li><a href="#integration-with-github-security"
+id="toc-integration-with-github-security">Integration with GitHub
+Security</a></li>
+</ul></li>
+<li><a href="#results-and-reporting"
+id="toc-results-and-reporting">Results and Reporting</a>
+<ul>
+<li><a href="#security-dashboard" id="toc-security-dashboard">Security
+Dashboard</a></li>
+<li><a href="#alert-levels" id="toc-alert-levels">Alert Levels</a></li>
+</ul></li>
+<li><a href="#best-practices-3" id="toc-best-practices-3">Best
+Practices</a>
+<ul>
+<li><a href="#build-requirements" id="toc-build-requirements">Build
+Requirements</a></li>
+<li><a href="#language-specific-optimizations"
+id="toc-language-specific-optimizations">Language-Specific
+Optimizations</a></li>
+<li><a href="#failure-handling" id="toc-failure-handling">Failure
+Handling</a></li>
+</ul></li>
+<li><a href="#maintenance-2" id="toc-maintenance-2">Maintenance</a>
+<ul>
+<li><a href="#regular-updates" id="toc-regular-updates">Regular
+Updates</a></li>
+<li><a href="#performance-optimization"
+id="toc-performance-optimization">Performance Optimization</a></li>
+</ul></li>
+<li><a href="#troubleshooting-2"
+id="toc-troubleshooting-2">Troubleshooting</a>
+<ul>
+<li><a href="#common-issues-2" id="toc-common-issues-2">Common
+Issues</a></li>
+<li><a href="#debugging-steps" id="toc-debugging-steps">Debugging
+Steps</a></li>
+</ul></li>
+</ul></li>
+<li><a href="#commit-lint-workflow" id="toc-commit-lint-workflow">Commit
+Lint Workflow</a>
+<ul>
+<li><a href="#overview-3" id="toc-overview-3">Overview</a></li>
+<li><a href="#configuration-2"
+id="toc-configuration-2">Configuration</a>
+<ul>
+<li><a href="#triggers-3" id="toc-triggers-3">Triggers</a></li>
+<li><a href="#runtime-environment-1"
+id="toc-runtime-environment-1">Runtime Environment</a></li>
+</ul></li>
+<li><a href="#workflow-steps-1" id="toc-workflow-steps-1">Workflow
+Steps</a>
+<ul>
+<li><a href="#repository-checkout-1" id="toc-repository-checkout-1">1.
+Repository Checkout</a></li>
+<li><a href="#commit-message-linting" id="toc-commit-message-linting">2.
+Commit Message Linting</a></li>
+</ul></li>
+<li><a href="#workflow-file-2" id="toc-workflow-file-2">Workflow
+File</a></li>
+<li><a href="#commit-message-standards"
+id="toc-commit-message-standards">Commit Message Standards</a>
+<ul>
+<li><a href="#standard-format" id="toc-standard-format">Standard
+Format</a></li>
+<li><a href="#common-types" id="toc-common-types">Common Types</a></li>
+<li><a href="#examples" id="toc-examples">Examples</a></li>
+</ul></li>
+<li><a href="#configuration-integration"
+id="toc-configuration-integration">Configuration Integration</a>
+<ul>
+<li><a href="#example-configuration"
+id="toc-example-configuration">Example Configuration</a></li>
+</ul></li>
+<li><a href="#validation-process" id="toc-validation-process">Validation
+Process</a>
+<ul>
+<li><a href="#pull-request-validation"
+id="toc-pull-request-validation">Pull Request Validation</a></li>
+<li><a href="#validation-rules" id="toc-validation-rules">Validation
+Rules</a></li>
+</ul></li>
+<li><a href="#benefits" id="toc-benefits">Benefits</a>
+<ul>
+<li><a href="#automated-changelog"
+id="toc-automated-changelog">Automated Changelog</a></li>
+<li><a href="#team-collaboration" id="toc-team-collaboration">Team
+Collaboration</a></li>
+<li><a href="#cicd-integration" id="toc-cicd-integration">CI/CD
+Integration</a></li>
+</ul></li>
+<li><a href="#status-checks" id="toc-status-checks">Status Checks</a>
+<ul>
+<li><a href="#success-indicators" id="toc-success-indicators">Success
+Indicators</a></li>
+<li><a href="#failure-indicators" id="toc-failure-indicators">Failure
+Indicators</a></li>
+</ul></li>
+<li><a href="#error-resolution" id="toc-error-resolution">Error
+Resolution</a>
+<ul>
+<li><a href="#common-issues-and-fixes"
+id="toc-common-issues-and-fixes">Common Issues and Fixes</a></li>
+<li><a href="#fixing-commit-messages"
+id="toc-fixing-commit-messages">Fixing Commit Messages</a></li>
+</ul></li>
+<li><a href="#best-practices-4" id="toc-best-practices-4">Best
+Practices</a>
+<ul>
+<li><a href="#writing-good-commit-messages"
+id="toc-writing-good-commit-messages">Writing Good Commit
+Messages</a></li>
+<li><a href="#team-workflow" id="toc-team-workflow">Team
+Workflow</a></li>
+</ul></li>
+<li><a href="#integration-with-other-workflows"
+id="toc-integration-with-other-workflows">Integration with Other
+Workflows</a>
+<ul>
+<li><a href="#semantic-release" id="toc-semantic-release">Semantic
+Release</a></li>
+<li><a href="#branch-protection" id="toc-branch-protection">Branch
+Protection</a></li>
+</ul></li>
+<li><a href="#monitoring-and-maintenance"
+id="toc-monitoring-and-maintenance">Monitoring and Maintenance</a>
+<ul>
+<li><a href="#regular-review" id="toc-regular-review">Regular
+Review</a></li>
+<li><a href="#tool-updates-1" id="toc-tool-updates-1">Tool
+Updates</a></li>
+</ul></li>
+</ul></li>
+<li><a href="#lint-workflow" id="toc-lint-workflow">Lint Workflow</a>
+<ul>
+<li><a href="#overview-4" id="toc-overview-4">Overview</a></li>
+<li><a href="#configuration-3"
+id="toc-configuration-3">Configuration</a>
+<ul>
+<li><a href="#triggers-4" id="toc-triggers-4">Triggers</a></li>
+<li><a href="#runtime-environment-2"
+id="toc-runtime-environment-2">Runtime Environment</a></li>
+</ul></li>
+<li><a href="#workflow-steps-2" id="toc-workflow-steps-2">Workflow
+Steps</a>
+<ul>
+<li><a href="#repository-checkout-2" id="toc-repository-checkout-2">1.
+Repository Checkout</a></li>
+<li><a href="#java-environment-setup" id="toc-java-environment-setup">2.
+Java Environment Setup</a></li>
+<li><a href="#backend-code-formatting"
+id="toc-backend-code-formatting">3. Backend Code Formatting</a></li>
+<li><a href="#node.js-environment-setup"
+id="toc-node.js-environment-setup">4. Node.js Environment Setup</a></li>
+<li><a href="#frontend-dependencies-installation"
+id="toc-frontend-dependencies-installation">5. Frontend Dependencies
+Installation</a></li>
+<li><a href="#frontend-code-linting" id="toc-frontend-code-linting">6.
+Frontend Code Linting</a></li>
+</ul></li>
+<li><a href="#workflow-file-3" id="toc-workflow-file-3">Workflow
+File</a></li>
+<li><a href="#code-quality-tools" id="toc-code-quality-tools">Code
+Quality Tools</a>
+<ul>
+<li><a href="#backend-maven-spotless"
+id="toc-backend-maven-spotless">Backend: Maven Spotless</a></li>
+<li><a href="#frontend-eslint" id="toc-frontend-eslint">Frontend:
+ESLint</a></li>
+</ul></li>
+<li><a href="#code-quality-standards"
+id="toc-code-quality-standards">Code Quality Standards</a>
+<ul>
+<li><a href="#java-backend-standards"
+id="toc-java-backend-standards">Java (Backend) Standards</a></li>
+<li><a href="#typescript-frontend-standards"
+id="toc-typescript-frontend-standards">TypeScript (Frontend)
+Standards</a></li>
+</ul></li>
+<li><a href="#integration-benefits"
+id="toc-integration-benefits">Integration Benefits</a>
+<ul>
+<li><a href="#continuous-quality-assurance"
+id="toc-continuous-quality-assurance">Continuous Quality
+Assurance</a></li>
+<li><a href="#developer-experience"
+id="toc-developer-experience">Developer Experience</a></li>
+<li><a href="#code-review-efficiency"
+id="toc-code-review-efficiency">Code Review Efficiency</a></li>
+</ul></li>
+<li><a href="#workflow-results" id="toc-workflow-results">Workflow
+Results</a>
+<ul>
+<li><a href="#success-indicators-1"
+id="toc-success-indicators-1">Success Indicators</a></li>
+<li><a href="#failure-indicators-1"
+id="toc-failure-indicators-1">Failure Indicators</a></li>
+</ul></li>
+<li><a href="#error-resolution-1" id="toc-error-resolution-1">Error
+Resolution</a>
+<ul>
+<li><a href="#common-backend-issues"
+id="toc-common-backend-issues">Common Backend Issues</a></li>
+<li><a href="#common-frontend-issues"
+id="toc-common-frontend-issues">Common Frontend Issues</a></li>
+</ul></li>
+<li><a href="#local-development-integration"
+id="toc-local-development-integration">Local Development Integration</a>
+<ul>
+<li><a href="#pre-commit-setup" id="toc-pre-commit-setup">Pre-commit
+Setup</a></li>
+<li><a href="#ide-configuration" id="toc-ide-configuration">IDE
+Configuration</a></li>
+</ul></li>
+<li><a href="#performance-optimization-1"
+id="toc-performance-optimization-1">Performance Optimization</a>
+<ul>
+<li><a href="#caching-strategies" id="toc-caching-strategies">Caching
+Strategies</a></li>
+<li><a href="#parallel-execution-1"
+id="toc-parallel-execution-1">Parallel Execution</a></li>
+</ul></li>
+<li><a href="#maintenance-3" id="toc-maintenance-3">Maintenance</a>
+<ul>
+<li><a href="#regular-updates-1" id="toc-regular-updates-1">Regular
+Updates</a></li>
+<li><a href="#configuration-management"
+id="toc-configuration-management">Configuration Management</a></li>
+</ul></li>
+<li><a href="#best-practices-5" id="toc-best-practices-5">Best
+Practices</a>
+<ul>
+<li><a href="#rule-selection" id="toc-rule-selection">Rule
+Selection</a></li>
+<li><a href="#error-handling" id="toc-error-handling">Error
+Handling</a></li>
+</ul></li>
+</ul></li>
+<li><a href="#backend-architecture"
+id="toc-backend-architecture">Backend Architecture</a></li>
+<li><a href="#database-architecture"
+id="toc-database-architecture">Database Architecture</a></li>
+<li><a href="#frontend-architecture"
+id="toc-frontend-architecture">Frontend Architecture</a></li>
+</ul>
+</nav>
+<h1 id="strengthtracker-documentation">StrengthTracker
+Documentation</h1>
+<p>Welcome to the complete documentation for StrengthTracker.</p>
+<hr />
+<hr />
+<h1 id="documentation-overview">Documentation Overview</h1>
+<p>This document provides an overview of the complete StrengthTracker
+documentation system and how to use the automated documentation
+generation.</p>
+<h2 id="documentation-structure">📁 Documentation Structure</h2>
+<pre><code>docs/
+├── github-actions.md          # Overview of CI/CD workflows
+├── architecture/              # Application architecture
+│   ├── backend.md            # Backend architecture
+│   ├── database.md           # Database design
+│   └── frontend.md           # Frontend architecture
+├── workflows/                 # Individual workflow documentation
+│   ├── README.md             # Workflow index
+│   ├── buildnsave.md         # Build &amp; Save Artifacts
+│   ├── codeql.md             # CodeQL Analysis
+│   ├── commit-lint.md        # Commit Linting
+│   └── lint.md               # Code Linting
+├── diagrams/                  # Architecture diagrams
+├── latex/                     # PDF/HTML styling
+│   ├── header.tex            # LaTeX header for PDF
+│   ├── style.css             # CSS for HTML
+│   └── template.html         # HTML template
+└── pdfs/                      # Generated individual PDFs</code></pre>
+<h2 id="automated-documentation-generation">🔄 Automated Documentation
+Generation</h2>
+<p>The documentation workflow
+(<code>.github/workflows/documentation.yml</code>) automatically
+generates:</p>
+<h3 id="pdf-documents">PDF Documents</h3>
+<ul>
+<li><strong>Individual PDFs</strong>: Each markdown file converted to a
+styled PDF</li>
+<li><strong>Master PDF</strong>: Complete documentation in a single PDF
+file</li>
+<li><strong>Diagram PDFs</strong>: Any images/diagrams converted to PDF
+format</li>
+</ul>
+<h3 id="html-documentation">HTML Documentation</h3>
+<ul>
+<li><strong>Interactive Website</strong>: Complete documentation as a
+navigable website</li>
+<li><strong>GitHub Pages</strong>: Automatically deployed to GitHub
+Pages</li>
+<li><strong>Responsive Design</strong>: Mobile-friendly
+documentation</li>
+</ul>
+<h3 id="triggers">Triggers</h3>
+<p>The workflow runs automatically when: - Changes are made to any file
+in the <code>docs/</code> directory - The workflow file itself is
+modified - Manual trigger via GitHub Actions interface</p>
+<h2 id="generated-output">📊 Generated Output</h2>
+<h3 id="pdf-features">PDF Features</h3>
+<ul>
+<li>Professional styling with StrengthTracker branding</li>
+<li>Table of contents with clickable links</li>
+<li>Consistent formatting across all documents</li>
+<li>Page numbers and headers</li>
+<li>Optimized for printing</li>
+</ul>
+<h3 id="html-features">HTML Features</h3>
+<ul>
+<li>Responsive design for all devices</li>
+<li>Interactive table of contents</li>
+<li>Syntax highlighting for code blocks</li>
+<li>Search functionality (via browser)</li>
+<li>Direct links to GitHub repository</li>
+</ul>
+<h2 id="usage">🚀 Usage</h2>
+<h3 id="viewing-documentation">Viewing Documentation</h3>
+<h4 id="online-recommended">Online (Recommended)</h4>
+<ul>
+<li><strong>GitHub Pages</strong>: Available at
+<code>https://[username].github.io/strengthTracker</code></li>
+<li><strong>Repository</strong>: Direct viewing in GitHub interface</li>
+</ul>
+<h4 id="downloads">Downloads</h4>
+<ul>
+<li><strong>Complete PDF</strong>: Download from GitHub Actions
+artifacts</li>
+<li><strong>Individual PDFs</strong>: Specific document downloads</li>
+<li><strong>HTML Archive</strong>: Complete website for offline use</li>
+</ul>
+<h3 id="updating-documentation">Updating Documentation</h3>
+<ol type="1">
+<li><strong>Edit Markdown Files</strong>: Update any <code>.md</code>
+file in the <code>docs/</code> directory</li>
+<li><strong>Commit Changes</strong>: Push to any branch</li>
+<li><strong>Automatic Generation</strong>: Workflow runs
+automatically</li>
+<li><strong>Review Output</strong>: Check generated PDFs and HTML</li>
+</ol>
+<h3 id="adding-new-documentation">Adding New Documentation</h3>
+<ol type="1">
+<li><strong>Create Markdown File</strong>: Add new <code>.md</code> file
+in appropriate directory</li>
+<li><strong>Update Index</strong>: Add reference in relevant README
+files</li>
+<li><strong>Commit Changes</strong>: Documentation automatically
+included in next build</li>
+</ol>
+<h2 id="customization">🎨 Customization</h2>
+<h3 id="styling">Styling</h3>
+<ul>
+<li><strong>PDF Styling</strong>: Modify
+<code>docs/latex/header.tex</code></li>
+<li><strong>HTML Styling</strong>: Update
+<code>docs/latex/style.css</code></li>
+<li><strong>HTML Template</strong>: Customize
+<code>docs/latex/template.html</code></li>
+</ul>
+<h3 id="workflow-configuration">Workflow Configuration</h3>
+<ul>
+<li><strong>Retention</strong>: Adjust artifact retention days in
+workflow</li>
+<li><strong>Deployment</strong>: Configure GitHub Pages settings</li>
+<li><strong>Triggers</strong>: Modify workflow triggers as needed</li>
+</ul>
+<h2 id="best-practices">📋 Best Practices</h2>
+<h3 id="writing-documentation">Writing Documentation</h3>
+<ul>
+<li><strong>Clear Headers</strong>: Use descriptive section headers</li>
+<li><strong>Code Examples</strong>: Include practical code samples</li>
+<li><strong>Cross-References</strong>: Link between related
+documents</li>
+<li><strong>Images</strong>: Add diagrams and screenshots when
+helpful</li>
+</ul>
+<h3 id="file-organization">File Organization</h3>
+<ul>
+<li><strong>Logical Structure</strong>: Group related documents in
+directories</li>
+<li><strong>Consistent Naming</strong>: Use kebab-case for file
+names</li>
+<li><strong>Index Files</strong>: Maintain README files for
+navigation</li>
+</ul>
+<h3 id="version-control">Version Control</h3>
+<ul>
+<li><strong>Meaningful Commits</strong>: Use descriptive commit messages
+for documentation changes</li>
+<li><strong>Review Changes</strong>: Preview generated output before
+merging</li>
+<li><strong>Collaborative Editing</strong>: Use pull requests for major
+documentation updates</li>
+</ul>
+<h2 id="troubleshooting">🔧 Troubleshooting</h2>
+<h3 id="common-issues">Common Issues</h3>
+<h4 id="pdf-generation-fails">PDF Generation Fails</h4>
+<ul>
+<li><strong>Check LaTeX Syntax</strong>: Ensure proper escaping in
+markdown</li>
+<li><strong>Image Paths</strong>: Verify all image references are
+correct</li>
+<li><strong>File Permissions</strong>: Ensure all files are
+accessible</li>
+</ul>
+<h4 id="html-generation-issues">HTML Generation Issues</h4>
+<ul>
+<li><strong>CSS Loading</strong>: Check CSS file paths and syntax</li>
+<li><strong>Template Errors</strong>: Validate HTML template syntax</li>
+<li><strong>Link Verification</strong>: Ensure all internal links are
+valid</li>
+</ul>
+<h4 id="deployment-problems">Deployment Problems</h4>
+<ul>
+<li><strong>GitHub Pages</strong>: Verify repository settings and
+permissions</li>
+<li><strong>Artifact Upload</strong>: Check workflow permissions and
+retention settings</li>
+<li><strong>Branch Protection</strong>: Ensure workflow can write to
+deployment branch</li>
+</ul>
+<h3 id="getting-help">Getting Help</h3>
+<ul>
+<li><strong>Workflow Logs</strong>: Check GitHub Actions logs for
+detailed error messages</li>
+<li><strong>Local Testing</strong>: Test pandoc commands locally before
+committing</li>
+<li><strong>Community Support</strong>: Reference pandoc and GitHub
+Actions documentation</li>
+</ul>
+<h2 id="metrics-and-monitoring">📈 Metrics and Monitoring</h2>
+<h3 id="documentation-quality">Documentation Quality</h3>
+<ul>
+<li><strong>Completeness</strong>: Ensure all features are
+documented</li>
+<li><strong>Accuracy</strong>: Keep documentation synchronized with code
+changes</li>
+<li><strong>Accessibility</strong>: Verify documentation is clear and
+comprehensive</li>
+</ul>
+<h3 id="workflow-performance">Workflow Performance</h3>
+<ul>
+<li><strong>Build Times</strong>: Monitor documentation generation
+duration</li>
+<li><strong>Artifact Sizes</strong>: Track generated file sizes</li>
+<li><strong>Deployment Success</strong>: Monitor GitHub Pages deployment
+status</li>
+</ul>
+<h2 id="maintenance">🔄 Maintenance</h2>
+<h3 id="regular-tasks">Regular Tasks</h3>
+<ul>
+<li><strong>Monthly Review</strong>: Check for outdated
+documentation</li>
+<li><strong>Quarterly Updates</strong>: Update styling and
+templates</li>
+<li><strong>Annual Audit</strong>: Comprehensive documentation
+review</li>
+</ul>
+<h3 id="tool-updates">Tool Updates</h3>
+<ul>
+<li><strong>Pandoc Version</strong>: Keep pandoc and LaTeX packages
+updated</li>
+<li><strong>GitHub Actions</strong>: Update action versions in
+workflow</li>
+<li><strong>Dependencies</strong>: Monitor and update styling
+dependencies</li>
+</ul>
+<hr />
+<h1 id="github-actions-workflows">GitHub Actions Workflows</h1>
+<p>This document provides comprehensive documentation for all GitHub
+Actions workflows used in the StrengthTracker project.</p>
+<h2 id="overview">Overview</h2>
+<p>The project uses four main GitHub Actions workflows to ensure code
+quality, security, and build automation:</p>
+<ol type="1">
+<li><strong>Build &amp; Save Artifacts</strong> - Builds and archives
+application artifacts</li>
+<li><strong>CodeQL Analysis</strong> - Performs static security
+analysis</li>
+<li><strong>Commit Lint</strong> - Ensures commit message
+conventions</li>
+<li><strong>Code Linting</strong> - Maintains code quality
+standards</li>
+</ol>
+<h2 id="workflows">Workflows</h2>
+<h3 id="build-save-artifacts"><a href="./workflows/buildnsave.md">Build
+&amp; Save Artifacts</a></h3>
+<ul>
+<li><strong>Purpose</strong>: Builds both backend (Java/Maven) and
+frontend (Angular) components</li>
+<li><strong>Triggers</strong>: Push and pull requests to main
+branch</li>
+<li><strong>Artifacts</strong>: JAR files and frontend distribution
+files</li>
+<li><strong>Retention</strong>: 7 days</li>
+</ul>
+<h3 id="codeql-analysis"><a href="./workflows/codeql.md">CodeQL
+Analysis</a></h3>
+<ul>
+<li><strong>Purpose</strong>: Static security analysis for Java and
+TypeScript code</li>
+<li><strong>Triggers</strong>: Push, pull requests, and weekly
+schedule</li>
+<li><strong>Languages</strong>: Java, TypeScript</li>
+<li><strong>Security</strong>: Identifies potential vulnerabilities</li>
+</ul>
+<h3 id="commit-lint"><a href="./workflows/commit-lint.md">Commit
+Lint</a></h3>
+<ul>
+<li><strong>Purpose</strong>: Enforces conventional commit message
+format</li>
+<li><strong>Triggers</strong>: Pull request events</li>
+<li><strong>Standards</strong>: Follows commitlint conventions</li>
+<li><strong>Integration</strong>: Uses project’s
+commitlint.config.js</li>
+</ul>
+<h3 id="code-linting"><a href="./workflows/lint.md">Code
+Linting</a></h3>
+<ul>
+<li><strong>Purpose</strong>: Maintains code quality standards</li>
+<li><strong>Triggers</strong>: All pushes and pull requests</li>
+<li><strong>Tools</strong>: Maven Spotless (Java), ESLint
+(TypeScript/Angular)</li>
+<li><strong>Standards</strong>: Automatic code formatting and
+linting</li>
+</ul>
+<h2 id="workflow-dependencies">Workflow Dependencies</h2>
+<pre class="mermaid"><code>graph TD
+    A[Code Push] --&gt; B[Lint Workflow]
+    A --&gt; C[Build &amp; Save]
+    A --&gt; D[CodeQL Analysis]
+    E[Pull Request] --&gt; F[Commit Lint]
+    E --&gt; B
+    E --&gt; C
+    E --&gt; D
+    G[Weekly Schedule] --&gt; D</code></pre>
+<h2 id="best-practices-1">Best Practices</h2>
+<ul>
+<li>All workflows run on Ubuntu latest for consistency</li>
+<li>Proper artifact retention policies (7 days)</li>
+<li>Security-focused permissions</li>
+<li>Language-specific optimizations</li>
+<li>Comprehensive error handling</li>
+</ul>
+<h2 id="maintenance-1">Maintenance</h2>
+<ul>
+<li>Review workflow performance monthly</li>
+<li>Update action versions quarterly</li>
+<li>Monitor artifact storage usage</li>
+<li>Adjust retention policies as needed</li>
+</ul>
+<hr />
+<h1 id="buildnsave-workflow">Buildnsave Workflow</h1>
+<h2 id="overview-1">Overview</h2>
+<p>The <strong>Build &amp; Save Artifacts</strong> workflow is
+responsible for building both the backend (Java/Maven) and frontend
+(Angular) components of the StrengthTracker application and saving the
+build artifacts for later use.</p>
+<h2 id="configuration">Configuration</h2>
+<p><strong>File</strong>:
+<code>.github/workflows/buildnsave.yml</code></p>
+<h3 id="triggers-1">Triggers</h3>
+<ul>
+<li><strong>Push</strong> to <code>main</code> branch</li>
+<li><strong>Pull Request</strong> to <code>main</code> branch</li>
+</ul>
+<h3 id="jobs">Jobs</h3>
+<h4 id="build-backend-build-backend">1. Build Backend
+(<code>build-backend</code>)</h4>
+<p><strong>Runtime Environment</strong>: - Ubuntu Latest - Maven 3.9.9
+with Amazon Corretto 21 Alpine container</p>
+<p><strong>Steps</strong>: 1. <strong>Checkout Code</strong>: Uses
+<code>actions/checkout@v4</code> 2. <strong>Build Backend</strong>: -
+Working directory: <code>backend/</code> - Command:
+<code>mvn clean package -DskipTests</code> - Skips tests for faster
+builds 3. <strong>Upload Artifact</strong>: - Artifact name:
+<code>backend-jar</code> - Path: <code>backend/target/*.jar</code> -
+Retention: 7 days</p>
+<h4 id="build-frontend-build-frontend">2. Build Frontend
+(<code>build-frontend</code>)</h4>
+<p><strong>Runtime Environment</strong>: - Ubuntu Latest - Node.js
+22</p>
+<p><strong>Steps</strong>: 1. <strong>Checkout Code</strong>: Uses
+<code>actions/checkout@v4</code> 2. <strong>Setup Node</strong>: Uses
+<code>actions/setup-node@v4</code> with Node.js version 22 3.
+<strong>Install Dependencies</strong>: - Working directory:
+<code>frontend/</code> - Command: <code>npm ci</code> (clean install for
+reproducible builds) 4. <strong>Build Frontend</strong>: - Working
+directory: <code>frontend/</code> - Command: <code>npm run build</code>
+5. <strong>Upload Artifact</strong>: - Artifact name:
+<code>frontend-dist</code> - Path: <code>frontend/dist/</code> -
+Retention: 7 days</p>
+<h2 id="workflow-file">Workflow File</h2>
+<div class="sourceCode" id="cb3"><pre
+class="sourceCode yaml"><code class="sourceCode yaml"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">name</span><span class="kw">:</span><span class="at"> Build &amp; Save Artifacts</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="fu">on</span><span class="kw">:</span></span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="fu">push</span><span class="kw">:</span></span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="fu">branches</span><span class="kw">:</span><span class="at"> </span><span class="kw">[</span><span class="at">main</span><span class="kw">]</span></span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="fu">pull_request</span><span class="kw">:</span></span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="fu">branches</span><span class="kw">:</span><span class="at"> </span><span class="kw">[</span><span class="at">main</span><span class="kw">]</span></span>
+<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a><span class="fu">jobs</span><span class="kw">:</span></span>
+<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="fu">build-backend</span><span class="kw">:</span></span>
+<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="fu">name</span><span class="kw">:</span><span class="at"> Build Backend</span></span>
+<span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="fu">runs-on</span><span class="kw">:</span><span class="at"> ubuntu-latest</span></span>
+<span id="cb3-13"><a href="#cb3-13" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="fu">container</span><span class="kw">:</span><span class="at"> maven:3.9.9-amazoncorretto-21-alpine</span></span>
+<span id="cb3-14"><a href="#cb3-14" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="fu">steps</span><span class="kw">:</span></span>
+<span id="cb3-15"><a href="#cb3-15" aria-hidden="true" tabindex="-1"></a><span class="at">      </span><span class="kw">-</span><span class="at"> </span><span class="fu">uses</span><span class="kw">:</span><span class="at"> actions/checkout@v4</span></span>
+<span id="cb3-16"><a href="#cb3-16" aria-hidden="true" tabindex="-1"></a><span class="at">      </span><span class="kw">-</span><span class="at"> </span><span class="fu">name</span><span class="kw">:</span><span class="at"> Build backend</span></span>
+<span id="cb3-17"><a href="#cb3-17" aria-hidden="true" tabindex="-1"></a><span class="at">        </span><span class="fu">working-directory</span><span class="kw">:</span><span class="at"> backend</span></span>
+<span id="cb3-18"><a href="#cb3-18" aria-hidden="true" tabindex="-1"></a><span class="at">        </span><span class="fu">run</span><span class="kw">:</span><span class="at"> mvn clean package -DskipTests</span></span>
+<span id="cb3-19"><a href="#cb3-19" aria-hidden="true" tabindex="-1"></a><span class="at">      </span><span class="kw">-</span><span class="at"> </span><span class="fu">name</span><span class="kw">:</span><span class="at"> Upload backend artifact</span></span>
+<span id="cb3-20"><a href="#cb3-20" aria-hidden="true" tabindex="-1"></a><span class="at">        </span><span class="fu">uses</span><span class="kw">:</span><span class="at"> actions/upload-artifact@v4</span></span>
+<span id="cb3-21"><a href="#cb3-21" aria-hidden="true" tabindex="-1"></a><span class="at">        </span><span class="fu">with</span><span class="kw">:</span></span>
+<span id="cb3-22"><a href="#cb3-22" aria-hidden="true" tabindex="-1"></a><span class="at">          </span><span class="fu">name</span><span class="kw">:</span><span class="at"> backend-jar</span></span>
+<span id="cb3-23"><a href="#cb3-23" aria-hidden="true" tabindex="-1"></a><span class="at">          </span><span class="fu">path</span><span class="kw">:</span><span class="at"> backend/target/*.jar</span></span>
+<span id="cb3-24"><a href="#cb3-24" aria-hidden="true" tabindex="-1"></a><span class="at">          </span><span class="fu">retention-days</span><span class="kw">:</span><span class="at"> </span><span class="dv">7</span></span>
+<span id="cb3-25"><a href="#cb3-25" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="fu">build-frontend</span><span class="kw">:</span></span>
+<span id="cb3-26"><a href="#cb3-26" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="fu">name</span><span class="kw">:</span><span class="at"> Build Frontend</span></span>
+<span id="cb3-27"><a href="#cb3-27" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="fu">runs-on</span><span class="kw">:</span><span class="at"> ubuntu-latest</span></span>
+<span id="cb3-28"><a href="#cb3-28" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="fu">steps</span><span class="kw">:</span></span>
+<span id="cb3-29"><a href="#cb3-29" aria-hidden="true" tabindex="-1"></a><span class="at">      </span><span class="kw">-</span><span class="at"> </span><span class="fu">uses</span><span class="kw">:</span><span class="at"> actions/checkout@v4</span></span>
+<span id="cb3-30"><a href="#cb3-30" aria-hidden="true" tabindex="-1"></a><span class="at">      </span><span class="kw">-</span><span class="at"> </span><span class="fu">name</span><span class="kw">:</span><span class="at"> Setup Node</span></span>
+<span id="cb3-31"><a href="#cb3-31" aria-hidden="true" tabindex="-1"></a><span class="at">        </span><span class="fu">uses</span><span class="kw">:</span><span class="at"> actions/setup-node@v4</span></span>
+<span id="cb3-32"><a href="#cb3-32" aria-hidden="true" tabindex="-1"></a><span class="at">        </span><span class="fu">with</span><span class="kw">:</span></span>
+<span id="cb3-33"><a href="#cb3-33" aria-hidden="true" tabindex="-1"></a><span class="at">          </span><span class="fu">node-version</span><span class="kw">:</span><span class="at"> </span><span class="st">&#39;22&#39;</span></span>
+<span id="cb3-34"><a href="#cb3-34" aria-hidden="true" tabindex="-1"></a><span class="at">      </span><span class="kw">-</span><span class="at"> </span><span class="fu">name</span><span class="kw">:</span><span class="at"> Install dependencies</span></span>
+<span id="cb3-35"><a href="#cb3-35" aria-hidden="true" tabindex="-1"></a><span class="at">        </span><span class="fu">working-directory</span><span class="kw">:</span><span class="at"> frontend</span></span>
+<span id="cb3-36"><a href="#cb3-36" aria-hidden="true" tabindex="-1"></a><span class="at">        </span><span class="fu">run</span><span class="kw">:</span><span class="at"> npm ci</span></span>
+<span id="cb3-37"><a href="#cb3-37" aria-hidden="true" tabindex="-1"></a><span class="at">      </span><span class="kw">-</span><span class="at"> </span><span class="fu">name</span><span class="kw">:</span><span class="at"> Build frontend</span></span>
+<span id="cb3-38"><a href="#cb3-38" aria-hidden="true" tabindex="-1"></a><span class="at">        </span><span class="fu">working-directory</span><span class="kw">:</span><span class="at"> frontend</span></span>
+<span id="cb3-39"><a href="#cb3-39" aria-hidden="true" tabindex="-1"></a><span class="at">        </span><span class="fu">run</span><span class="kw">:</span><span class="at"> npm run build</span></span>
+<span id="cb3-40"><a href="#cb3-40" aria-hidden="true" tabindex="-1"></a><span class="at">      </span><span class="kw">-</span><span class="at"> </span><span class="fu">name</span><span class="kw">:</span><span class="at"> Upload frontend artifact</span></span>
+<span id="cb3-41"><a href="#cb3-41" aria-hidden="true" tabindex="-1"></a><span class="at">        </span><span class="fu">uses</span><span class="kw">:</span><span class="at"> actions/upload-artifact@v4</span></span>
+<span id="cb3-42"><a href="#cb3-42" aria-hidden="true" tabindex="-1"></a><span class="at">        </span><span class="fu">with</span><span class="kw">:</span></span>
+<span id="cb3-43"><a href="#cb3-43" aria-hidden="true" tabindex="-1"></a><span class="at">          </span><span class="fu">name</span><span class="kw">:</span><span class="at"> frontend-dist</span></span>
+<span id="cb3-44"><a href="#cb3-44" aria-hidden="true" tabindex="-1"></a><span class="at">          </span><span class="fu">path</span><span class="kw">:</span><span class="at"> frontend/dist/</span></span>
+<span id="cb3-45"><a href="#cb3-45" aria-hidden="true" tabindex="-1"></a><span class="at">          </span><span class="fu">retention-days</span><span class="kw">:</span><span class="at"> </span><span class="dv">7</span></span></code></pre></div>
+<h2 id="artifacts">Artifacts</h2>
+<h3 id="backend-artifact">Backend Artifact</h3>
+<ul>
+<li><strong>Name</strong>: <code>backend-jar</code></li>
+<li><strong>Contents</strong>: Compiled JAR files from Maven build</li>
+<li><strong>Location</strong>: <code>backend/target/*.jar</code></li>
+<li><strong>Use Cases</strong>: Deployment, testing, distribution</li>
+</ul>
+<h3 id="frontend-artifact">Frontend Artifact</h3>
+<ul>
+<li><strong>Name</strong>: <code>frontend-dist</code></li>
+<li><strong>Contents</strong>: Built Angular application (HTML, CSS,
+JS)</li>
+<li><strong>Location</strong>: <code>frontend/dist/</code></li>
+<li><strong>Use Cases</strong>: Static file serving, deployment</li>
+</ul>
+<h2 id="key-features">Key Features</h2>
+<h3 id="parallel-execution">Parallel Execution</h3>
+<p>Both backend and frontend builds run in parallel, reducing overall
+build time.</p>
+<h3 id="container-usage">Container Usage</h3>
+<p>The backend build uses a specific Maven container with Amazon
+Corretto 21, ensuring consistent Java environment.</p>
+<h3 id="clean-builds">Clean Builds</h3>
+<ul>
+<li>Backend: Uses <code>mvn clean package</code> for fresh builds</li>
+<li>Frontend: Uses <code>npm ci</code> for reproducible dependency
+installation</li>
+</ul>
+<h3 id="artifact-management">Artifact Management</h3>
+<ul>
+<li>7-day retention policy balances storage costs with debugging
+needs</li>
+<li>Separate artifacts for backend and frontend allow independent
+deployment</li>
+</ul>
+<h2 id="best-practices-2">Best Practices</h2>
+<ol type="1">
+<li><strong>Skip Tests</strong>: Tests are skipped in build for speed -
+they should run in separate test workflows</li>
+<li><strong>Clean Install</strong>: <code>npm ci</code> ensures
+reproducible frontend builds</li>
+<li><strong>Specific Versions</strong>: Node.js and Maven versions are
+pinned for consistency</li>
+<li><strong>Working Directories</strong>: Explicit directory
+specification prevents path issues</li>
+</ol>
+<h2 id="troubleshooting-1">Troubleshooting</h2>
+<h3 id="common-issues-1">Common Issues</h3>
+<ol type="1">
+<li><strong>Build Failures</strong>:
+<ul>
+<li>Check Maven dependencies in <code>pom.xml</code></li>
+<li>Verify Node.js compatibility with <code>package.json</code></li>
+</ul></li>
+<li><strong>Artifact Upload Failures</strong>:
+<ul>
+<li>Ensure build produces files in expected locations</li>
+<li>Check file path patterns in upload configuration</li>
+</ul></li>
+<li><strong>Container Issues</strong>:
+<ul>
+<li>Verify Maven container availability</li>
+<li>Check Java version compatibility</li>
+</ul></li>
+</ol>
+<h2 id="monitoring">Monitoring</h2>
+<ul>
+<li>Monitor build times and optimize as needed</li>
+<li>Review artifact storage usage monthly</li>
+<li>Update action versions quarterly for security and features</li>
+</ul>
+<hr />
+<h1 id="codeql-workflow">Codeql Workflow</h1>
+<h2 id="overview-2">Overview</h2>
+<p>The <strong>CodeQL Analysis</strong> workflow performs static
+security analysis on the StrengthTracker codebase to identify potential
+security vulnerabilities, bugs, and code quality issues in both Java and
+TypeScript code.</p>
+<h2 id="configuration-1">Configuration</h2>
+<p><strong>File</strong>: <code>.github/workflows/codeql.yml</code></p>
+<h3 id="triggers-2">Triggers</h3>
+<ul>
+<li><strong>Push</strong> to <code>main</code> branch</li>
+<li><strong>Pull Request</strong> to <code>main</code> branch<br />
+</li>
+<li><strong>Scheduled</strong>: Weekly on Sundays at midnight UTC
+(<code>0 0 * * 0</code>)</li>
+</ul>
+<h3 id="permissions">Permissions</h3>
+<p>The workflow requires specific permissions for security analysis: -
+<code>actions: read</code> - Read workflow artifacts -
+<code>contents: read</code> - Read repository contents -
+<code>security-events: write</code> - Write security findings</p>
+<h2 id="job-configuration">Job Configuration</h2>
+<h3 id="matrix-strategy">Matrix Strategy</h3>
+<p>The workflow uses a matrix strategy to analyze multiple languages: -
+<strong>Languages</strong>: <code>java</code>, <code>typescript</code> -
+<strong>Fail-fast</strong>: Disabled (<code>false</code>) to ensure all
+languages are analyzed even if one fails</p>
+<h3 id="runtime-environment">Runtime Environment</h3>
+<ul>
+<li><strong>OS</strong>: Ubuntu Latest</li>
+<li><strong>Strategy</strong>: Parallel execution for each language</li>
+</ul>
+<h2 id="workflow-steps">Workflow Steps</h2>
+<h3 id="repository-checkout">1. Repository Checkout</h3>
+<ul>
+<li><strong>Action</strong>: <code>actions/checkout@v4</code></li>
+<li><strong>Purpose</strong>: Downloads the complete repository for
+analysis</li>
+</ul>
+<h3 id="java-environment-setup-conditional">2. Java Environment Setup
+(Conditional)</h3>
+<ul>
+<li><strong>Condition</strong>: Only when
+<code>matrix.language == 'java'</code></li>
+<li><strong>Action</strong>: <code>actions/setup-java@v4</code></li>
+<li><strong>Java Version</strong>: 21</li>
+<li><strong>Distribution</strong>: Temurin (Eclipse Adoptium)</li>
+</ul>
+<h3 id="codeql-initialization">3. CodeQL Initialization</h3>
+<ul>
+<li><strong>Action</strong>:
+<code>github/codeql-action/init@v3</code></li>
+<li><strong>Languages</strong>: Uses matrix language
+(<code>${{ matrix.language }}</code>)</li>
+<li><strong>Purpose</strong>: Prepares CodeQL analysis environment</li>
+</ul>
+<h3 id="backend-build-java">4. Backend Build (Java)</h3>
+<ul>
+<li><strong>Condition</strong>: Only when
+<code>matrix.language == 'java'</code></li>
+<li><strong>Working Directory</strong>: <code>backend/</code></li>
+<li><strong>Command</strong>:
+<code>mvn clean package -DskipTests</code></li>
+<li><strong>Purpose</strong>: Compiles Java code for comprehensive
+analysis</li>
+</ul>
+<h3 id="frontend-build-typescript">5. Frontend Build (TypeScript)</h3>
+<ul>
+<li><p><strong>Condition</strong>: Only when
+<code>matrix.language == 'typescript'</code></p></li>
+<li><p><strong>Working Directory</strong>:
+<code>frontend/</code></p></li>
+<li><p><strong>Commands</strong>:</p>
+<div class="sourceCode" id="cb4"><pre
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="ex">npm</span> ci</span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="ex">npm</span> run build</span></code></pre></div></li>
+<li><p><strong>Purpose</strong>: Builds Angular application for complete
+TypeScript analysis</p></li>
+</ul>
+<h3 id="codeql-analysis-1">6. CodeQL Analysis</h3>
+<ul>
+<li><strong>Action</strong>:
+<code>github/codeql-action/analyze@v3</code></li>
+<li><strong>Purpose</strong>: Performs static analysis and uploads
+results to GitHub Security tab</li>
+</ul>
+<h2 id="workflow-file-1">Workflow File</h2>
+<div class="sourceCode" id="cb5"><pre
+class="sourceCode yaml"><code class="sourceCode yaml"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">name</span><span class="kw">:</span><span class="at"> CodeQL Analysis</span></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a><span class="fu">on</span><span class="kw">:</span></span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="fu">push</span><span class="kw">:</span></span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="fu">branches</span><span class="kw">:</span><span class="at"> </span><span class="kw">[</span><span class="at">main</span><span class="kw">]</span></span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="fu">pull_request</span><span class="kw">:</span></span>
+<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="fu">branches</span><span class="kw">:</span><span class="at"> </span><span class="kw">[</span><span class="at">main</span><span class="kw">]</span></span>
+<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="fu">schedule</span><span class="kw">:</span></span>
+<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="kw">-</span><span class="at"> </span><span class="fu">cron</span><span class="kw">:</span><span class="at"> </span><span class="st">&#39;0 0 * * 0&#39;</span><span class="co">  # Weekly (optional)</span></span>
+<span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-11"><a href="#cb5-11" aria-hidden="true" tabindex="-1"></a><span class="fu">jobs</span><span class="kw">:</span></span>
+<span id="cb5-12"><a href="#cb5-12" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="fu">analyze</span><span class="kw">:</span></span>
+<span id="cb5-13"><a href="#cb5-13" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="fu">name</span><span class="kw">:</span><span class="at"> Analyze with CodeQL</span></span>
+<span id="cb5-14"><a href="#cb5-14" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="fu">runs-on</span><span class="kw">:</span><span class="at"> ubuntu-latest</span></span>
+<span id="cb5-15"><a href="#cb5-15" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="fu">permissions</span><span class="kw">:</span></span>
+<span id="cb5-16"><a href="#cb5-16" aria-hidden="true" tabindex="-1"></a><span class="at">      </span><span class="fu">actions</span><span class="kw">:</span><span class="at"> read</span></span>
+<span id="cb5-17"><a href="#cb5-17" aria-hidden="true" tabindex="-1"></a><span class="at">      </span><span class="fu">contents</span><span class="kw">:</span><span class="at"> read</span></span>
+<span id="cb5-18"><a href="#cb5-18" aria-hidden="true" tabindex="-1"></a><span class="at">      </span><span class="fu">security-events</span><span class="kw">:</span><span class="at"> write</span></span>
+<span id="cb5-19"><a href="#cb5-19" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-20"><a href="#cb5-20" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="fu">strategy</span><span class="kw">:</span></span>
+<span id="cb5-21"><a href="#cb5-21" aria-hidden="true" tabindex="-1"></a><span class="at">      </span><span class="fu">fail-fast</span><span class="kw">:</span><span class="at"> </span><span class="ch">false</span></span>
+<span id="cb5-22"><a href="#cb5-22" aria-hidden="true" tabindex="-1"></a><span class="at">      </span><span class="fu">matrix</span><span class="kw">:</span></span>
+<span id="cb5-23"><a href="#cb5-23" aria-hidden="true" tabindex="-1"></a><span class="at">        </span><span class="fu">language</span><span class="kw">:</span><span class="at"> </span><span class="kw">[</span><span class="at"> </span><span class="st">&#39;java&#39;</span><span class="kw">,</span><span class="at"> </span><span class="st">&#39;typescript&#39;</span><span class="at"> </span><span class="kw">]</span><span class="co">  # Angular = TypeScript</span></span>
+<span id="cb5-24"><a href="#cb5-24" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-25"><a href="#cb5-25" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="fu">steps</span><span class="kw">:</span></span>
+<span id="cb5-26"><a href="#cb5-26" aria-hidden="true" tabindex="-1"></a><span class="at">      </span><span class="kw">-</span><span class="at"> </span><span class="fu">name</span><span class="kw">:</span><span class="at"> Checkout repository</span></span>
+<span id="cb5-27"><a href="#cb5-27" aria-hidden="true" tabindex="-1"></a><span class="at">        </span><span class="fu">uses</span><span class="kw">:</span><span class="at"> actions/checkout@v4</span></span>
+<span id="cb5-28"><a href="#cb5-28" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-29"><a href="#cb5-29" aria-hidden="true" tabindex="-1"></a><span class="co">      # Install Java only for Java</span></span>
+<span id="cb5-30"><a href="#cb5-30" aria-hidden="true" tabindex="-1"></a><span class="at">      </span><span class="kw">-</span><span class="at"> </span><span class="fu">name</span><span class="kw">:</span><span class="at"> Set up Java 21</span></span>
+<span id="cb5-31"><a href="#cb5-31" aria-hidden="true" tabindex="-1"></a><span class="at">        </span><span class="fu">if</span><span class="kw">:</span><span class="at"> matrix.language == &#39;java&#39;</span></span>
+<span id="cb5-32"><a href="#cb5-32" aria-hidden="true" tabindex="-1"></a><span class="at">        </span><span class="fu">uses</span><span class="kw">:</span><span class="at"> actions/setup-java@v4</span></span>
+<span id="cb5-33"><a href="#cb5-33" aria-hidden="true" tabindex="-1"></a><span class="at">        </span><span class="fu">with</span><span class="kw">:</span></span>
+<span id="cb5-34"><a href="#cb5-34" aria-hidden="true" tabindex="-1"></a><span class="at">          </span><span class="fu">java-version</span><span class="kw">:</span><span class="at"> </span><span class="st">&#39;21&#39;</span></span>
+<span id="cb5-35"><a href="#cb5-35" aria-hidden="true" tabindex="-1"></a><span class="at">          </span><span class="fu">distribution</span><span class="kw">:</span><span class="at"> </span><span class="st">&#39;temurin&#39;</span></span>
+<span id="cb5-36"><a href="#cb5-36" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-37"><a href="#cb5-37" aria-hidden="true" tabindex="-1"></a><span class="at">      </span><span class="kw">-</span><span class="at"> </span><span class="fu">name</span><span class="kw">:</span><span class="at"> Initialize CodeQL</span></span>
+<span id="cb5-38"><a href="#cb5-38" aria-hidden="true" tabindex="-1"></a><span class="at">        </span><span class="fu">uses</span><span class="kw">:</span><span class="at"> github/codeql-action/init@v3</span></span>
+<span id="cb5-39"><a href="#cb5-39" aria-hidden="true" tabindex="-1"></a><span class="at">        </span><span class="fu">with</span><span class="kw">:</span></span>
+<span id="cb5-40"><a href="#cb5-40" aria-hidden="true" tabindex="-1"></a><span class="at">          </span><span class="fu">languages</span><span class="kw">:</span><span class="at"> ${{ matrix.language }}</span></span>
+<span id="cb5-41"><a href="#cb5-41" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-42"><a href="#cb5-42" aria-hidden="true" tabindex="-1"></a><span class="co">      # Manual build required for Java</span></span>
+<span id="cb5-43"><a href="#cb5-43" aria-hidden="true" tabindex="-1"></a><span class="at">      </span><span class="kw">-</span><span class="at"> </span><span class="fu">name</span><span class="kw">:</span><span class="at"> Build backend</span></span>
+<span id="cb5-44"><a href="#cb5-44" aria-hidden="true" tabindex="-1"></a><span class="at">        </span><span class="fu">if</span><span class="kw">:</span><span class="at"> matrix.language == &#39;java&#39;</span></span>
+<span id="cb5-45"><a href="#cb5-45" aria-hidden="true" tabindex="-1"></a><span class="at">        </span><span class="fu">working-directory</span><span class="kw">:</span><span class="at"> backend</span></span>
+<span id="cb5-46"><a href="#cb5-46" aria-hidden="true" tabindex="-1"></a><span class="at">        </span><span class="fu">run</span><span class="kw">:</span><span class="at"> mvn clean package -DskipTests</span></span>
+<span id="cb5-47"><a href="#cb5-47" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-48"><a href="#cb5-48" aria-hidden="true" tabindex="-1"></a><span class="co">      # Manual build for Angular (optional, but useful for complete code)</span></span>
+<span id="cb5-49"><a href="#cb5-49" aria-hidden="true" tabindex="-1"></a><span class="at">      </span><span class="kw">-</span><span class="at"> </span><span class="fu">name</span><span class="kw">:</span><span class="at"> Build frontend</span></span>
+<span id="cb5-50"><a href="#cb5-50" aria-hidden="true" tabindex="-1"></a><span class="at">        </span><span class="fu">if</span><span class="kw">:</span><span class="at"> matrix.language == &#39;typescript&#39;</span></span>
+<span id="cb5-51"><a href="#cb5-51" aria-hidden="true" tabindex="-1"></a><span class="at">        </span><span class="fu">working-directory</span><span class="kw">:</span><span class="at"> frontend</span></span>
+<span id="cb5-52"><a href="#cb5-52" aria-hidden="true" tabindex="-1"></a><span class="fu">        run</span><span class="kw">: </span><span class="ch">|</span></span>
+<span id="cb5-53"><a href="#cb5-53" aria-hidden="true" tabindex="-1"></a>          npm ci</span>
+<span id="cb5-54"><a href="#cb5-54" aria-hidden="true" tabindex="-1"></a>          npm run build</span>
+<span id="cb5-55"><a href="#cb5-55" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-56"><a href="#cb5-56" aria-hidden="true" tabindex="-1"></a><span class="at">      </span><span class="kw">-</span><span class="at"> </span><span class="fu">name</span><span class="kw">:</span><span class="at"> Perform CodeQL Analysis</span></span>
+<span id="cb5-57"><a href="#cb5-57" aria-hidden="true" tabindex="-1"></a><span class="at">        </span><span class="fu">uses</span><span class="kw">:</span><span class="at"> github/codeql-action/analyze@v3</span></span></code></pre></div>
+<h2 id="security-analysis-coverage">Security Analysis Coverage</h2>
+<h3 id="java-analysis">Java Analysis</h3>
+<ul>
+<li><strong>Security Vulnerabilities</strong>: SQL injection, XSS,
+authentication issues</li>
+<li><strong>Code Quality</strong>: Null pointer exceptions, resource
+leaks, performance issues</li>
+<li><strong>Best Practices</strong>: Proper exception handling, secure
+coding patterns</li>
+</ul>
+<h3 id="typescript-analysis">TypeScript Analysis</h3>
+<ul>
+<li><strong>Security Vulnerabilities</strong>: DOM-based XSS, prototype
+pollution, unsafe operations</li>
+<li><strong>Code Quality</strong>: Type safety, unused variables,
+unreachable code</li>
+<li><strong>Angular-Specific</strong>: Component security, template
+injection, routing security</li>
+</ul>
+<h2 id="key-features-1">Key Features</h2>
+<h3 id="comprehensive-coverage">Comprehensive Coverage</h3>
+<ul>
+<li>Analyzes complete codebase including compiled artifacts</li>
+<li>Covers both backend and frontend security aspects</li>
+<li>Includes build-time generated code</li>
+</ul>
+<h3 id="automated-scheduling">Automated Scheduling</h3>
+<ul>
+<li>Weekly analysis ensures continuous security monitoring</li>
+<li>Catches newly introduced vulnerabilities</li>
+<li>Monitors for new security patterns</li>
+</ul>
+<h3 id="integration-with-github-security">Integration with GitHub
+Security</h3>
+<ul>
+<li>Results appear in GitHub Security tab</li>
+<li>Integration with pull request checks</li>
+<li>Automated security alerts</li>
+</ul>
+<h2 id="results-and-reporting">Results and Reporting</h2>
+<h3 id="security-dashboard">Security Dashboard</h3>
+<p>Results are available in: - <strong>GitHub Security Tab</strong>:
+Detailed vulnerability reports - <strong>Pull Request Checks</strong>:
+Security status for PRs - <strong>Security Alerts</strong>: Automated
+notifications for critical issues</p>
+<h3 id="alert-levels">Alert Levels</h3>
+<ul>
+<li><strong>Error</strong>: Critical security vulnerabilities requiring
+immediate attention</li>
+<li><strong>Warning</strong>: Potential security issues or code quality
+problems</li>
+<li><strong>Note</strong>: Code quality suggestions and best
+practices</li>
+</ul>
+<h2 id="best-practices-3">Best Practices</h2>
+<h3 id="build-requirements">Build Requirements</h3>
+<ul>
+<li>Java analysis requires compiled code for comprehensive coverage</li>
+<li>TypeScript analysis benefits from complete build artifacts</li>
+<li>Both builds skip tests to focus on source code analysis</li>
+</ul>
+<h3 id="language-specific-optimizations">Language-Specific
+Optimizations</h3>
+<ul>
+<li>Java: Uses specific JDK version and Maven build</li>
+<li>TypeScript: Includes Angular-specific patterns and dependencies</li>
+</ul>
+<h3 id="failure-handling">Failure Handling</h3>
+<ul>
+<li><code>fail-fast: false</code> ensures all languages are
+analyzed</li>
+<li>Individual language failures don’t block other analyses</li>
+</ul>
+<h2 id="maintenance-2">Maintenance</h2>
+<h3 id="regular-updates">Regular Updates</h3>
+<ul>
+<li>Update CodeQL action versions quarterly</li>
+<li>Review and tune analysis queries as needed</li>
+<li>Monitor for new language-specific security patterns</li>
+</ul>
+<h3 id="performance-optimization">Performance Optimization</h3>
+<ul>
+<li>Monitor analysis duration and optimize build steps</li>
+<li>Review weekly schedule timing based on development patterns</li>
+<li>Consider caching strategies for dependencies</li>
+</ul>
+<h2 id="troubleshooting-2">Troubleshooting</h2>
+<h3 id="common-issues-2">Common Issues</h3>
+<ol type="1">
+<li><strong>Build Failures</strong>:
+<ul>
+<li>Ensure all dependencies are properly configured</li>
+<li>Check Java/Node.js version compatibility</li>
+<li>Verify build commands work locally</li>
+</ul></li>
+<li><strong>Analysis Timeout</strong>:
+<ul>
+<li>Large codebases may require optimization</li>
+<li>Consider excluding test files or generated code</li>
+<li>Review CodeQL configuration</li>
+</ul></li>
+<li><strong>Permission Issues</strong>:
+<ul>
+<li>Verify security-events write permission</li>
+<li>Check repository security settings</li>
+<li>Ensure proper GitHub token permissions</li>
+</ul></li>
+</ol>
+<h3 id="debugging-steps">Debugging Steps</h3>
+<ol type="1">
+<li>Check workflow logs for specific error messages</li>
+<li>Verify build commands work in local environment</li>
+<li>Review CodeQL documentation for language-specific requirements</li>
+<li>Test with minimal codebase to isolate issues</li>
+</ol>
+<hr />
+<h1 id="commit-lint-workflow">Commit Lint Workflow</h1>
+<h2 id="overview-3">Overview</h2>
+<p>The <strong>Commit Lint</strong> workflow ensures that all commit
+messages follow conventional commit format standards. This workflow
+helps maintain a clean, readable commit history and enables automated
+changelog generation.</p>
+<h2 id="configuration-2">Configuration</h2>
+<p><strong>File</strong>:
+<code>.github/workflows/commit_lint.yml</code></p>
+<h3 id="triggers-3">Triggers</h3>
+<p>The workflow runs on pull request events: - <strong>opened</strong>:
+When a pull request is first created - <strong>edited</strong>: When
+pull request details are modified - <strong>synchronize</strong>: When
+new commits are pushed to the pull request</p>
+<h3 id="runtime-environment-1">Runtime Environment</h3>
+<ul>
+<li><strong>OS</strong>: Ubuntu Latest</li>
+<li><strong>Scope</strong>: Pull requests only (not direct pushes to
+main)</li>
+</ul>
+<h2 id="workflow-steps-1">Workflow Steps</h2>
+<h3 id="repository-checkout-1">1. Repository Checkout</h3>
+<ul>
+<li><strong>Action</strong>: <code>actions/checkout@v4</code></li>
+<li><strong>Purpose</strong>: Downloads the repository to access commit
+history and configuration</li>
+</ul>
+<h3 id="commit-message-linting">2. Commit Message Linting</h3>
+<ul>
+<li><strong>Action</strong>:
+<code>wagoid/commitlint-github-action@v3</code></li>
+<li><strong>Purpose</strong>: Validates commit messages against
+conventional commit standards</li>
+<li><strong>Configuration</strong>: Uses project’s
+<code>commitlint.config.js</code> file</li>
+</ul>
+<h2 id="workflow-file-2">Workflow File</h2>
+<div class="sourceCode" id="cb6"><pre
+class="sourceCode yaml"><code class="sourceCode yaml"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">name</span><span class="kw">:</span><span class="at"> Lint Commit Messages</span></span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a><span class="fu">on</span><span class="kw">:</span></span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="fu">pull_request</span><span class="kw">:</span></span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="fu">types</span><span class="kw">:</span><span class="at"> </span><span class="kw">[</span><span class="at">opened</span><span class="kw">,</span><span class="at"> edited</span><span class="kw">,</span><span class="at"> synchronize</span><span class="kw">]</span></span>
+<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a><span class="fu">jobs</span><span class="kw">:</span></span>
+<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="fu">commitlint</span><span class="kw">:</span></span>
+<span id="cb6-9"><a href="#cb6-9" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="fu">runs-on</span><span class="kw">:</span><span class="at"> ubuntu-latest</span></span>
+<span id="cb6-10"><a href="#cb6-10" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="fu">steps</span><span class="kw">:</span></span>
+<span id="cb6-11"><a href="#cb6-11" aria-hidden="true" tabindex="-1"></a><span class="at">      </span><span class="kw">-</span><span class="at"> </span><span class="fu">uses</span><span class="kw">:</span><span class="at"> actions/checkout@v4</span></span>
+<span id="cb6-12"><a href="#cb6-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-13"><a href="#cb6-13" aria-hidden="true" tabindex="-1"></a><span class="at">      </span><span class="kw">-</span><span class="at"> </span><span class="fu">uses</span><span class="kw">:</span><span class="at"> wagoid/commitlint-github-action@v3</span></span></code></pre></div>
+<h2 id="commit-message-standards">Commit Message Standards</h2>
+<p>The workflow enforces conventional commit format based on your
+project’s <code>commitlint.config.js</code> configuration.</p>
+<h3 id="standard-format">Standard Format</h3>
+<pre><code>&lt;type&gt;[optional scope]: &lt;description&gt;
+
+[optional body]
+
+[optional footer(s)]</code></pre>
+<h3 id="common-types">Common Types</h3>
+<ul>
+<li><strong>feat</strong>: New features</li>
+<li><strong>fix</strong>: Bug fixes</li>
+<li><strong>docs</strong>: Documentation changes</li>
+<li><strong>style</strong>: Code style changes (formatting, etc.)</li>
+<li><strong>refactor</strong>: Code refactoring</li>
+<li><strong>test</strong>: Test additions or modifications</li>
+<li><strong>chore</strong>: Build process or auxiliary tool changes</li>
+<li><strong>ci</strong>: Continuous integration changes</li>
+<li><strong>perf</strong>: Performance improvements</li>
+<li><strong>build</strong>: Build system changes</li>
+</ul>
+<h3 id="examples">Examples</h3>
+<h4 id="valid-commit-messages">Valid Commit Messages</h4>
+<pre><code>feat: add user authentication system
+fix: resolve login validation bug
+docs: update API documentation
+style: format code according to prettier rules
+refactor: simplify user service logic
+test: add unit tests for workout controller
+chore: update dependencies
+ci: add CodeQL security scanning
+perf: optimize database queries
+build: configure Docker multi-stage builds</code></pre>
+<h4 id="with-scope">With Scope</h4>
+<pre><code>feat(auth): implement JWT token validation
+fix(ui): correct responsive layout issues
+docs(api): add endpoint documentation
+test(user): add integration tests</code></pre>
+<h4 id="with-body-and-footer">With Body and Footer</h4>
+<pre><code>feat: add user workout tracking
+
+Implement comprehensive workout tracking system including:
+- Exercise logging
+- Progress tracking  
+- Performance analytics
+
+Closes #123
+Breaking-change: Updated user model schema</code></pre>
+<h2 id="configuration-integration">Configuration Integration</h2>
+<p>The workflow automatically uses your project’s commitlint
+configuration:</p>
+<p><strong>Location</strong>: <code>commitlint.config.js</code> (project
+root)</p>
+<h3 id="example-configuration">Example Configuration</h3>
+<div class="sourceCode" id="cb11"><pre
+class="sourceCode javascript"><code class="sourceCode javascript"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>module<span class="op">.</span><span class="at">exports</span> <span class="op">=</span> {</span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>  <span class="dt">extends</span><span class="op">:</span> [<span class="st">&#39;@commitlint/config-conventional&#39;</span>]<span class="op">,</span></span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>  <span class="dt">rules</span><span class="op">:</span> {</span>
+<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a>    <span class="st">&#39;type-enum&#39;</span><span class="op">:</span> [</span>
+<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a>      <span class="dv">2</span><span class="op">,</span></span>
+<span id="cb11-6"><a href="#cb11-6" aria-hidden="true" tabindex="-1"></a>      <span class="st">&#39;always&#39;</span><span class="op">,</span></span>
+<span id="cb11-7"><a href="#cb11-7" aria-hidden="true" tabindex="-1"></a>      [</span>
+<span id="cb11-8"><a href="#cb11-8" aria-hidden="true" tabindex="-1"></a>        <span class="st">&#39;feat&#39;</span><span class="op">,</span></span>
+<span id="cb11-9"><a href="#cb11-9" aria-hidden="true" tabindex="-1"></a>        <span class="st">&#39;fix&#39;</span><span class="op">,</span></span>
+<span id="cb11-10"><a href="#cb11-10" aria-hidden="true" tabindex="-1"></a>        <span class="st">&#39;docs&#39;</span><span class="op">,</span></span>
+<span id="cb11-11"><a href="#cb11-11" aria-hidden="true" tabindex="-1"></a>        <span class="st">&#39;style&#39;</span><span class="op">,</span></span>
+<span id="cb11-12"><a href="#cb11-12" aria-hidden="true" tabindex="-1"></a>        <span class="st">&#39;refactor&#39;</span><span class="op">,</span></span>
+<span id="cb11-13"><a href="#cb11-13" aria-hidden="true" tabindex="-1"></a>        <span class="st">&#39;test&#39;</span><span class="op">,</span></span>
+<span id="cb11-14"><a href="#cb11-14" aria-hidden="true" tabindex="-1"></a>        <span class="st">&#39;chore&#39;</span><span class="op">,</span></span>
+<span id="cb11-15"><a href="#cb11-15" aria-hidden="true" tabindex="-1"></a>        <span class="st">&#39;ci&#39;</span><span class="op">,</span></span>
+<span id="cb11-16"><a href="#cb11-16" aria-hidden="true" tabindex="-1"></a>        <span class="st">&#39;perf&#39;</span><span class="op">,</span></span>
+<span id="cb11-17"><a href="#cb11-17" aria-hidden="true" tabindex="-1"></a>        <span class="st">&#39;build&#39;</span></span>
+<span id="cb11-18"><a href="#cb11-18" aria-hidden="true" tabindex="-1"></a>      ]</span>
+<span id="cb11-19"><a href="#cb11-19" aria-hidden="true" tabindex="-1"></a>    ]<span class="op">,</span></span>
+<span id="cb11-20"><a href="#cb11-20" aria-hidden="true" tabindex="-1"></a>    <span class="st">&#39;subject-case&#39;</span><span class="op">:</span> [<span class="dv">2</span><span class="op">,</span> <span class="st">&#39;never&#39;</span><span class="op">,</span> [<span class="st">&#39;upper-case&#39;</span>]]<span class="op">,</span></span>
+<span id="cb11-21"><a href="#cb11-21" aria-hidden="true" tabindex="-1"></a>    <span class="st">&#39;subject-empty&#39;</span><span class="op">:</span> [<span class="dv">2</span><span class="op">,</span> <span class="st">&#39;never&#39;</span>]<span class="op">,</span></span>
+<span id="cb11-22"><a href="#cb11-22" aria-hidden="true" tabindex="-1"></a>    <span class="st">&#39;subject-full-stop&#39;</span><span class="op">:</span> [<span class="dv">2</span><span class="op">,</span> <span class="st">&#39;never&#39;</span><span class="op">,</span> <span class="st">&#39;.&#39;</span>]<span class="op">,</span></span>
+<span id="cb11-23"><a href="#cb11-23" aria-hidden="true" tabindex="-1"></a>    <span class="st">&#39;header-max-length&#39;</span><span class="op">:</span> [<span class="dv">2</span><span class="op">,</span> <span class="st">&#39;always&#39;</span><span class="op">,</span> <span class="dv">72</span>]</span>
+<span id="cb11-24"><a href="#cb11-24" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb11-25"><a href="#cb11-25" aria-hidden="true" tabindex="-1"></a>}<span class="op">;</span></span></code></pre></div>
+<h2 id="validation-process">Validation Process</h2>
+<h3 id="pull-request-validation">Pull Request Validation</h3>
+<ol type="1">
+<li><strong>All Commits Checked</strong>: Every commit in the PR is
+validated</li>
+<li><strong>Real-time Feedback</strong>: Results appear as PR status
+checks</li>
+<li><strong>Blocking Behavior</strong>: Invalid commits prevent PR
+merging (if configured)</li>
+</ol>
+<h3 id="validation-rules">Validation Rules</h3>
+<ul>
+<li><strong>Type Required</strong>: Commit must start with valid
+type</li>
+<li><strong>Description Required</strong>: Descriptive text after
+colon</li>
+<li><strong>Length Limits</strong>: Header typically limited to 72
+characters</li>
+<li><strong>Case Sensitivity</strong>: Usually lowercase for types and
+descriptions</li>
+<li><strong>Format Consistency</strong>: Strict adherence to
+conventional format</li>
+</ul>
+<h2 id="benefits">Benefits</h2>
+<h3 id="automated-changelog">Automated Changelog</h3>
+<p>Well-formatted commits enable: - Automatic changelog generation -
+Version bump automation - Release note creation - Semantic
+versioning</p>
+<h3 id="team-collaboration">Team Collaboration</h3>
+<ul>
+<li><strong>Consistency</strong>: Uniform commit message format</li>
+<li><strong>Readability</strong>: Easy to understand commit history</li>
+<li><strong>Searchability</strong>: Better git log filtering and
+searching</li>
+<li><strong>Documentation</strong>: Commits serve as development
+documentation</li>
+</ul>
+<h3 id="cicd-integration">CI/CD Integration</h3>
+<ul>
+<li><strong>Automated Releases</strong>: Trigger releases based on
+commit types</li>
+<li><strong>Version Management</strong>: Semantic versioning from commit
+messages</li>
+<li><strong>Deployment Decisions</strong>: Deploy based on change
+types</li>
+</ul>
+<h2 id="status-checks">Status Checks</h2>
+<h3 id="success-indicators">Success Indicators</h3>
+<p>✅ <strong>Pass</strong>: All commit messages follow conventional
+format - Green checkmark in PR status checks<br />
+- PR can be merged (if no other blocking checks)</p>
+<h3 id="failure-indicators">Failure Indicators</h3>
+<p>❌ <strong>Fail</strong>: One or more commits violate format rules -
+Red X in PR status checks - Detailed error messages showing violations -
+PR blocked from merging until fixed</p>
+<h2 id="error-resolution">Error Resolution</h2>
+<h3 id="common-issues-and-fixes">Common Issues and Fixes</h3>
+<h4 id="missing-type">1. Missing Type</h4>
+<p><strong>Error</strong>: <code>subject may not be empty</code>
+<strong>Fix</strong>: Add commit type</p>
+<div class="sourceCode" id="cb12"><pre
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Bad</span></span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> commit <span class="at">-m</span> <span class="st">&quot;update user service&quot;</span></span>
+<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Good  </span></span>
+<span id="cb12-5"><a href="#cb12-5" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> commit <span class="at">-m</span> <span class="st">&quot;refactor: update user service&quot;</span></span></code></pre></div>
+<h4 id="invalid-type">2. Invalid Type</h4>
+<p><strong>Error</strong>:
+<code>type must be one of [feat, fix, docs, ...]</code>
+<strong>Fix</strong>: Use valid type</p>
+<div class="sourceCode" id="cb13"><pre
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Bad</span></span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> commit <span class="at">-m</span> <span class="st">&quot;update: add new feature&quot;</span></span>
+<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Good</span></span>
+<span id="cb13-5"><a href="#cb13-5" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> commit <span class="at">-m</span> <span class="st">&quot;feat: add new feature&quot;</span></span></code></pre></div>
+<h4 id="header-too-long">3. Header Too Long</h4>
+<p><strong>Error</strong>:
+<code>header must not be longer than 72 characters</code>
+<strong>Fix</strong>: Shorten description or use body</p>
+<div class="sourceCode" id="cb14"><pre
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Bad</span></span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> commit <span class="at">-m</span> <span class="st">&quot;feat: implement comprehensive user authentication system with JWT tokens and password validation&quot;</span></span>
+<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Good</span></span>
+<span id="cb14-5"><a href="#cb14-5" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> commit <span class="at">-m</span> <span class="st">&quot;feat: implement user authentication system</span></span>
+<span id="cb14-6"><a href="#cb14-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-7"><a href="#cb14-7" aria-hidden="true" tabindex="-1"></a><span class="st">Add JWT token validation and password security features&quot;</span></span></code></pre></div>
+<h4 id="wrong-case">4. Wrong Case</h4>
+<p><strong>Error</strong>:
+<code>subject must not be sentence-case</code> <strong>Fix</strong>: Use
+lowercase</p>
+<div class="sourceCode" id="cb15"><pre
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Bad</span></span>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> commit <span class="at">-m</span> <span class="st">&quot;feat: Add New User Feature&quot;</span></span>
+<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-4"><a href="#cb15-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Good</span></span>
+<span id="cb15-5"><a href="#cb15-5" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> commit <span class="at">-m</span> <span class="st">&quot;feat: add new user feature&quot;</span></span></code></pre></div>
+<h3 id="fixing-commit-messages">Fixing Commit Messages</h3>
+<h4 id="for-unpushed-commits">For Unpushed Commits</h4>
+<div class="sourceCode" id="cb16"><pre
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Fix last commit message</span></span>
+<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> commit <span class="at">--amend</span> <span class="at">-m</span> <span class="st">&quot;feat: corrected commit message&quot;</span></span>
+<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-4"><a href="#cb16-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Fix multiple commits interactively</span></span>
+<span id="cb16-5"><a href="#cb16-5" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> rebase <span class="at">-i</span> HEAD~3</span></code></pre></div>
+<h4 id="for-pushed-commits">For Pushed Commits</h4>
+<div class="sourceCode" id="cb17"><pre
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Rewrite and force push (use carefully)</span></span>
+<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> rebase <span class="at">-i</span> HEAD~3</span>
+<span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> push <span class="at">--force-with-lease</span></span></code></pre></div>
+<h2 id="best-practices-4">Best Practices</h2>
+<h3 id="writing-good-commit-messages">Writing Good Commit Messages</h3>
+<ol type="1">
+<li><strong>Be Specific</strong>: Clearly describe what changed</li>
+<li><strong>Use Present Tense</strong>: “add feature” not “added
+feature”</li>
+<li><strong>Be Concise</strong>: Keep headers under 72 characters</li>
+<li><strong>Explain Why</strong>: Use body for context when needed</li>
+<li><strong>Reference Issues</strong>: Include issue numbers when
+applicable</li>
+</ol>
+<h3 id="team-workflow">Team Workflow</h3>
+<ol type="1">
+<li><strong>Education</strong>: Train team on conventional commits</li>
+<li><strong>Tools</strong>: Use commitizen or similar tools for
+assistance</li>
+<li><strong>Pre-commit Hooks</strong>: Add local validation before
+push</li>
+<li><strong>Documentation</strong>: Maintain team guidelines for commit
+standards</li>
+</ol>
+<h2 id="integration-with-other-workflows">Integration with Other
+Workflows</h2>
+<h3 id="semantic-release">Semantic Release</h3>
+<p>Commit messages can trigger: - Automatic version bumps - Changelog
+generation - Release creation - Package publishing</p>
+<h3 id="branch-protection">Branch Protection</h3>
+<p>Configure branch protection rules to: - Require status checks to pass
+- Block merging with invalid commits - Enforce workflow compliance</p>
+<h2 id="monitoring-and-maintenance">Monitoring and Maintenance</h2>
+<h3 id="regular-review">Regular Review</h3>
+<ul>
+<li>Monitor commit message quality trends</li>
+<li>Update configuration as team needs evolve</li>
+<li>Review and update allowed commit types</li>
+<li>Adjust length limits based on project needs</li>
+</ul>
+<h3 id="tool-updates-1">Tool Updates</h3>
+<ul>
+<li>Update commitlint action version regularly</li>
+<li>Keep commitlint configuration current</li>
+<li>Review new conventional commit standards</li>
+<li>Integrate with development tools and IDEs</li>
+</ul>
+<hr />
+<h1 id="lint-workflow">Lint Workflow</h1>
+<h2 id="overview-4">Overview</h2>
+<p>The <strong>Code Linting</strong> workflow maintains code quality
+standards across the StrengthTracker project by running automated
+formatting and linting tools for both backend (Java) and frontend
+(Angular/TypeScript) code.</p>
+<h2 id="configuration-3">Configuration</h2>
+<p><strong>File</strong>: <code>.github/workflows/lint.yml</code></p>
+<h3 id="triggers-4">Triggers</h3>
+<ul>
+<li><strong>Push</strong>: All pushes to any branch</li>
+<li><strong>Pull Request</strong>: All pull request events</li>
+</ul>
+<h3 id="runtime-environment-2">Runtime Environment</h3>
+<ul>
+<li><strong>OS</strong>: Ubuntu Latest</li>
+<li><strong>Multi-language</strong>: Java 21 and Node.js 22</li>
+</ul>
+<h2 id="workflow-steps-2">Workflow Steps</h2>
+<h3 id="repository-checkout-2">1. Repository Checkout</h3>
+<ul>
+<li><strong>Action</strong>: <code>actions/checkout@v3</code></li>
+<li><strong>Purpose</strong>: Downloads repository for code
+analysis</li>
+</ul>
+<h3 id="java-environment-setup">2. Java Environment Setup</h3>
+<ul>
+<li><strong>Action</strong>: <code>actions/setup-java@v4</code></li>
+<li><strong>Java Version</strong>: 21</li>
+<li><strong>Distribution</strong>: Temurin (Eclipse Adoptium)</li>
+<li><strong>Purpose</strong>: Provides Java runtime for Maven
+Spotless</li>
+</ul>
+<h3 id="backend-code-formatting">3. Backend Code Formatting</h3>
+<ul>
+<li><strong>Working Directory</strong>: <code>./backend</code></li>
+<li><strong>Tool</strong>: Maven Spotless</li>
+<li><strong>Command</strong>: <code>mvn spotless:apply</code></li>
+<li><strong>Purpose</strong>: Automatically formats Java code according
+to project standards</li>
+</ul>
+<h3 id="node.js-environment-setup">4. Node.js Environment Setup</h3>
+<ul>
+<li><strong>Action</strong>: <code>actions/setup-node@v3</code></li>
+<li><strong>Node Version</strong>: 22</li>
+<li><strong>Purpose</strong>: Provides Node.js runtime for npm and
+ESLint</li>
+</ul>
+<h3 id="frontend-dependencies-installation">5. Frontend Dependencies
+Installation</h3>
+<ul>
+<li><strong>Working Directory</strong>: <code>./frontend</code></li>
+<li><strong>Command</strong>: <code>npm install</code></li>
+<li><strong>Purpose</strong>: Installs required packages for
+linting</li>
+</ul>
+<h3 id="frontend-code-linting">6. Frontend Code Linting</h3>
+<ul>
+<li><strong>Working Directory</strong>: <code>./frontend</code></li>
+<li><strong>Tool</strong>: ESLint</li>
+<li><strong>Command</strong>: <code>npm run lint</code></li>
+<li><strong>Purpose</strong>: Checks TypeScript/Angular code for quality
+and style issues</li>
+</ul>
+<h2 id="workflow-file-3">Workflow File</h2>
+<div class="sourceCode" id="cb18"><pre
+class="sourceCode yaml"><code class="sourceCode yaml"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="fu">name</span><span class="kw">:</span><span class="at"> Lint Code</span></span>
+<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a><span class="co"># This workflow runs ESLint and Checkstyle to ensure code quality.</span></span>
+<span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-4"><a href="#cb18-4" aria-hidden="true" tabindex="-1"></a><span class="fu">on</span><span class="kw">:</span><span class="at"> </span><span class="kw">[</span><span class="at">push</span><span class="kw">,</span><span class="at"> pull_request</span><span class="kw">]</span></span>
+<span id="cb18-5"><a href="#cb18-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-6"><a href="#cb18-6" aria-hidden="true" tabindex="-1"></a><span class="fu">jobs</span><span class="kw">:</span></span>
+<span id="cb18-7"><a href="#cb18-7" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="fu">lint</span><span class="kw">:</span></span>
+<span id="cb18-8"><a href="#cb18-8" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="fu">runs-on</span><span class="kw">:</span><span class="at"> ubuntu-latest</span></span>
+<span id="cb18-9"><a href="#cb18-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-10"><a href="#cb18-10" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="fu">steps</span><span class="kw">:</span></span>
+<span id="cb18-11"><a href="#cb18-11" aria-hidden="true" tabindex="-1"></a><span class="at">      </span><span class="kw">-</span><span class="at"> </span><span class="fu">name</span><span class="kw">:</span><span class="at"> Checkout code</span></span>
+<span id="cb18-12"><a href="#cb18-12" aria-hidden="true" tabindex="-1"></a><span class="at">        </span><span class="fu">uses</span><span class="kw">:</span><span class="at"> actions/checkout@v3</span></span>
+<span id="cb18-13"><a href="#cb18-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-14"><a href="#cb18-14" aria-hidden="true" tabindex="-1"></a><span class="at">      </span><span class="kw">-</span><span class="at"> </span><span class="fu">name</span><span class="kw">:</span><span class="at"> Set up Java 21</span></span>
+<span id="cb18-15"><a href="#cb18-15" aria-hidden="true" tabindex="-1"></a><span class="at">        </span><span class="fu">uses</span><span class="kw">:</span><span class="at"> actions/setup-java@v4</span></span>
+<span id="cb18-16"><a href="#cb18-16" aria-hidden="true" tabindex="-1"></a><span class="at">        </span><span class="fu">with</span><span class="kw">:</span></span>
+<span id="cb18-17"><a href="#cb18-17" aria-hidden="true" tabindex="-1"></a><span class="at">          </span><span class="fu">java-version</span><span class="kw">:</span><span class="at"> </span><span class="st">&#39;21&#39;</span></span>
+<span id="cb18-18"><a href="#cb18-18" aria-hidden="true" tabindex="-1"></a><span class="at">          </span><span class="fu">distribution</span><span class="kw">:</span><span class="at"> </span><span class="st">&#39;temurin&#39;</span></span>
+<span id="cb18-19"><a href="#cb18-19" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-20"><a href="#cb18-20" aria-hidden="true" tabindex="-1"></a><span class="at">      </span><span class="kw">-</span><span class="at"> </span><span class="fu">name</span><span class="kw">:</span><span class="at"> Build and run spotless</span></span>
+<span id="cb18-21"><a href="#cb18-21" aria-hidden="true" tabindex="-1"></a><span class="at">        </span><span class="fu">run</span><span class="kw">:</span><span class="at"> mvn spotless:apply</span></span>
+<span id="cb18-22"><a href="#cb18-22" aria-hidden="true" tabindex="-1"></a><span class="at">        </span><span class="fu">working-directory</span><span class="kw">:</span><span class="at"> ./backend</span></span>
+<span id="cb18-23"><a href="#cb18-23" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-24"><a href="#cb18-24" aria-hidden="true" tabindex="-1"></a><span class="at">      </span><span class="kw">-</span><span class="at"> </span><span class="fu">name</span><span class="kw">:</span><span class="at"> Set up Node.js</span></span>
+<span id="cb18-25"><a href="#cb18-25" aria-hidden="true" tabindex="-1"></a><span class="at">        </span><span class="fu">uses</span><span class="kw">:</span><span class="at"> actions/setup-node@v3</span></span>
+<span id="cb18-26"><a href="#cb18-26" aria-hidden="true" tabindex="-1"></a><span class="at">        </span><span class="fu">with</span><span class="kw">:</span></span>
+<span id="cb18-27"><a href="#cb18-27" aria-hidden="true" tabindex="-1"></a><span class="at">          </span><span class="fu">node-version</span><span class="kw">:</span><span class="at"> </span><span class="st">&#39;22&#39;</span></span>
+<span id="cb18-28"><a href="#cb18-28" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-29"><a href="#cb18-29" aria-hidden="true" tabindex="-1"></a><span class="at">      </span><span class="kw">-</span><span class="at"> </span><span class="fu">name</span><span class="kw">:</span><span class="at"> Install dependencies</span></span>
+<span id="cb18-30"><a href="#cb18-30" aria-hidden="true" tabindex="-1"></a><span class="at">        </span><span class="fu">run</span><span class="kw">:</span><span class="at"> npm install</span></span>
+<span id="cb18-31"><a href="#cb18-31" aria-hidden="true" tabindex="-1"></a><span class="at">        </span><span class="fu">working-directory</span><span class="kw">:</span><span class="at"> ./frontend</span></span>
+<span id="cb18-32"><a href="#cb18-32" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-33"><a href="#cb18-33" aria-hidden="true" tabindex="-1"></a><span class="at">      </span><span class="kw">-</span><span class="at"> </span><span class="fu">name</span><span class="kw">:</span><span class="at"> Run ESLint</span></span>
+<span id="cb18-34"><a href="#cb18-34" aria-hidden="true" tabindex="-1"></a><span class="at">        </span><span class="fu">run</span><span class="kw">:</span><span class="at"> npm run lint</span></span>
+<span id="cb18-35"><a href="#cb18-35" aria-hidden="true" tabindex="-1"></a><span class="at">        </span><span class="fu">working-directory</span><span class="kw">:</span><span class="at"> ./frontend</span></span></code></pre></div>
+<h2 id="code-quality-tools">Code Quality Tools</h2>
+<h3 id="backend-maven-spotless">Backend: Maven Spotless</h3>
+<h4 id="purpose">Purpose</h4>
+<ul>
+<li><strong>Code Formatting</strong>: Automatically formats Java
+code</li>
+<li><strong>Consistency</strong>: Ensures uniform code style across the
+project</li>
+<li><strong>Integration</strong>: Seamlessly integrates with Maven build
+process</li>
+</ul>
+<h4 id="features">Features</h4>
+<ul>
+<li><strong>Automatic Formatting</strong>: Fixes formatting issues
+automatically</li>
+<li><strong>Multiple Formatters</strong>: Supports various Java
+formatters (Google Java Format, Eclipse, etc.)</li>
+<li><strong>Custom Rules</strong>: Configurable formatting rules</li>
+<li><strong>Import Organization</strong>: Automatically organizes import
+statements</li>
+</ul>
+<h4 id="configuration-4">Configuration</h4>
+<p>Spotless configuration is typically defined in
+<code>backend/pom.xml</code>:</p>
+<div class="sourceCode" id="cb19"><pre
+class="sourceCode xml"><code class="sourceCode xml"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a>&lt;<span class="kw">plugin</span>&gt;</span>
+<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a>    &lt;<span class="kw">groupId</span>&gt;com.diffplug.spotless&lt;/<span class="kw">groupId</span>&gt;</span>
+<span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a>    &lt;<span class="kw">artifactId</span>&gt;spotless-maven-plugin&lt;/<span class="kw">artifactId</span>&gt;</span>
+<span id="cb19-4"><a href="#cb19-4" aria-hidden="true" tabindex="-1"></a>    &lt;<span class="kw">version</span>&gt;2.x.x&lt;/<span class="kw">version</span>&gt;</span>
+<span id="cb19-5"><a href="#cb19-5" aria-hidden="true" tabindex="-1"></a>    &lt;<span class="kw">configuration</span>&gt;</span>
+<span id="cb19-6"><a href="#cb19-6" aria-hidden="true" tabindex="-1"></a>        &lt;<span class="kw">java</span>&gt;</span>
+<span id="cb19-7"><a href="#cb19-7" aria-hidden="true" tabindex="-1"></a>            &lt;<span class="kw">googleJavaFormat</span>/&gt;</span>
+<span id="cb19-8"><a href="#cb19-8" aria-hidden="true" tabindex="-1"></a>            &lt;<span class="kw">removeUnusedImports</span>/&gt;</span>
+<span id="cb19-9"><a href="#cb19-9" aria-hidden="true" tabindex="-1"></a>            &lt;<span class="kw">trimTrailingWhitespace</span>/&gt;</span>
+<span id="cb19-10"><a href="#cb19-10" aria-hidden="true" tabindex="-1"></a>            &lt;<span class="kw">endWithNewline</span>/&gt;</span>
+<span id="cb19-11"><a href="#cb19-11" aria-hidden="true" tabindex="-1"></a>        &lt;/<span class="kw">java</span>&gt;</span>
+<span id="cb19-12"><a href="#cb19-12" aria-hidden="true" tabindex="-1"></a>    &lt;/<span class="kw">configuration</span>&gt;</span>
+<span id="cb19-13"><a href="#cb19-13" aria-hidden="true" tabindex="-1"></a>&lt;/<span class="kw">plugin</span>&gt;</span></code></pre></div>
+<h4 id="common-formatting-rules">Common Formatting Rules</h4>
+<ul>
+<li><strong>Indentation</strong>: Consistent spacing (typically 2 or 4
+spaces)</li>
+<li><strong>Line Length</strong>: Maximum line length limits</li>
+<li><strong>Import Organization</strong>: Alphabetical ordering and
+unused import removal</li>
+<li><strong>Bracket Placement</strong>: Consistent brace
+positioning</li>
+<li><strong>Whitespace</strong>: Trailing whitespace removal</li>
+</ul>
+<h3 id="frontend-eslint">Frontend: ESLint</h3>
+<h4 id="purpose-1">Purpose</h4>
+<ul>
+<li><strong>Code Quality</strong>: Identifies problematic patterns in
+TypeScript/JavaScript</li>
+<li><strong>Style Consistency</strong>: Enforces consistent coding
+style</li>
+<li><strong>Error Prevention</strong>: Catches potential bugs and
+issues</li>
+<li><strong>Angular Best Practices</strong>: Enforces Angular-specific
+patterns</li>
+</ul>
+<h4 id="configuration-5">Configuration</h4>
+<p>ESLint configuration is defined in
+<code>frontend/eslint.config.js</code>:</p>
+<div class="sourceCode" id="cb20"><pre
+class="sourceCode javascript"><code class="sourceCode javascript"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a>module<span class="op">.</span><span class="at">exports</span> <span class="op">=</span> {</span>
+<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a>  <span class="dt">extends</span><span class="op">:</span> [</span>
+<span id="cb20-3"><a href="#cb20-3" aria-hidden="true" tabindex="-1"></a>    <span class="st">&#39;@angular-eslint/recommended&#39;</span><span class="op">,</span></span>
+<span id="cb20-4"><a href="#cb20-4" aria-hidden="true" tabindex="-1"></a>    <span class="st">&#39;@typescript-eslint/recommended&#39;</span><span class="op">,</span></span>
+<span id="cb20-5"><a href="#cb20-5" aria-hidden="true" tabindex="-1"></a>    <span class="st">&#39;prettier&#39;</span></span>
+<span id="cb20-6"><a href="#cb20-6" aria-hidden="true" tabindex="-1"></a>  ]<span class="op">,</span></span>
+<span id="cb20-7"><a href="#cb20-7" aria-hidden="true" tabindex="-1"></a>  <span class="dt">rules</span><span class="op">:</span> {</span>
+<span id="cb20-8"><a href="#cb20-8" aria-hidden="true" tabindex="-1"></a>    <span class="co">// Custom rules specific to the project</span></span>
+<span id="cb20-9"><a href="#cb20-9" aria-hidden="true" tabindex="-1"></a>    <span class="st">&#39;@typescript-eslint/no-unused-vars&#39;</span><span class="op">:</span> <span class="st">&#39;error&#39;</span><span class="op">,</span></span>
+<span id="cb20-10"><a href="#cb20-10" aria-hidden="true" tabindex="-1"></a>    <span class="st">&#39;@angular-eslint/component-selector&#39;</span><span class="op">:</span> <span class="st">&#39;error&#39;</span><span class="op">,</span></span>
+<span id="cb20-11"><a href="#cb20-11" aria-hidden="true" tabindex="-1"></a>    <span class="st">&#39;prefer-const&#39;</span><span class="op">:</span> <span class="st">&#39;error&#39;</span><span class="op">,</span></span>
+<span id="cb20-12"><a href="#cb20-12" aria-hidden="true" tabindex="-1"></a>    <span class="st">&#39;no-var&#39;</span><span class="op">:</span> <span class="st">&#39;error&#39;</span></span>
+<span id="cb20-13"><a href="#cb20-13" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb20-14"><a href="#cb20-14" aria-hidden="true" tabindex="-1"></a>}<span class="op">;</span></span></code></pre></div>
+<h4 id="rule-categories">Rule Categories</h4>
+<h5 id="typescript-rules">TypeScript Rules</h5>
+<ul>
+<li><strong>Type Safety</strong>: Ensures proper TypeScript usage</li>
+<li><strong>Variable Declaration</strong>: Enforces <code>const</code>
+and <code>let</code> over <code>var</code></li>
+<li><strong>Function Declarations</strong>: Consistent function
+syntax</li>
+<li><strong>Interface Usage</strong>: Proper interface and type
+definitions</li>
+</ul>
+<h5 id="angular-rules">Angular Rules</h5>
+<ul>
+<li><strong>Component Structure</strong>: Proper component
+organization</li>
+<li><strong>Template Syntax</strong>: Angular template best
+practices</li>
+<li><strong>Service Patterns</strong>: Dependency injection
+standards</li>
+<li><strong>Lifecycle Hooks</strong>: Proper hook implementation</li>
+</ul>
+<h5 id="general-javascript-rules">General JavaScript Rules</h5>
+<ul>
+<li><strong>Code Quality</strong>: Unreachable code detection</li>
+<li><strong>Performance</strong>: Inefficient patterns
+identification<br />
+</li>
+<li><strong>Security</strong>: Potential security vulnerabilities</li>
+<li><strong>Maintainability</strong>: Code complexity analysis</li>
+</ul>
+<h2 id="code-quality-standards">Code Quality Standards</h2>
+<h3 id="java-backend-standards">Java (Backend) Standards</h3>
+<div class="sourceCode" id="cb21"><pre
+class="sourceCode java"><code class="sourceCode java"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="co">// Proper formatting example</span></span>
+<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a><span class="kw">public</span> <span class="kw">class</span> UserService <span class="op">{</span></span>
+<span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a>    <span class="kw">private</span> <span class="dt">final</span> UserRepository userRepository<span class="op">;</span></span>
+<span id="cb21-4"><a href="#cb21-4" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb21-5"><a href="#cb21-5" aria-hidden="true" tabindex="-1"></a>    <span class="kw">public</span> <span class="fu">UserService</span><span class="op">(</span>UserRepository userRepository<span class="op">)</span> <span class="op">{</span></span>
+<span id="cb21-6"><a href="#cb21-6" aria-hidden="true" tabindex="-1"></a>        <span class="kw">this</span><span class="op">.</span><span class="fu">userRepository</span> <span class="op">=</span> userRepository<span class="op">;</span></span>
+<span id="cb21-7"><a href="#cb21-7" aria-hidden="true" tabindex="-1"></a>    <span class="op">}</span></span>
+<span id="cb21-8"><a href="#cb21-8" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb21-9"><a href="#cb21-9" aria-hidden="true" tabindex="-1"></a>    <span class="kw">public</span> User <span class="fu">findById</span><span class="op">(</span><span class="bu">Long</span> id<span class="op">)</span> <span class="op">{</span></span>
+<span id="cb21-10"><a href="#cb21-10" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> userRepository<span class="op">.</span><span class="fu">findById</span><span class="op">(</span>id<span class="op">)</span></span>
+<span id="cb21-11"><a href="#cb21-11" aria-hidden="true" tabindex="-1"></a>            <span class="op">.</span><span class="fu">orElseThrow</span><span class="op">(()</span> <span class="op">-&gt;</span> <span class="kw">new</span> <span class="fu">UserNotFoundException</span><span class="op">(</span><span class="st">&quot;User not found: &quot;</span> <span class="op">+</span> id<span class="op">));</span></span>
+<span id="cb21-12"><a href="#cb21-12" aria-hidden="true" tabindex="-1"></a>    <span class="op">}</span></span>
+<span id="cb21-13"><a href="#cb21-13" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code></pre></div>
+<h3 id="typescript-frontend-standards">TypeScript (Frontend)
+Standards</h3>
+<div class="sourceCode" id="cb22"><pre
+class="sourceCode typescript"><code class="sourceCode typescript"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="co">// Proper linting example</span></span>
+<span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a>@<span class="fu">Component</span>({</span>
+<span id="cb22-3"><a href="#cb22-3" aria-hidden="true" tabindex="-1"></a>  selector<span class="op">:</span> <span class="st">&#39;app-user-profile&#39;</span><span class="op">,</span></span>
+<span id="cb22-4"><a href="#cb22-4" aria-hidden="true" tabindex="-1"></a>  templateUrl<span class="op">:</span> <span class="st">&#39;./user-profile.component.html&#39;</span><span class="op">,</span></span>
+<span id="cb22-5"><a href="#cb22-5" aria-hidden="true" tabindex="-1"></a>  styleUrls<span class="op">:</span> [<span class="st">&#39;./user-profile.component.scss&#39;</span>]</span>
+<span id="cb22-6"><a href="#cb22-6" aria-hidden="true" tabindex="-1"></a>})</span>
+<span id="cb22-7"><a href="#cb22-7" aria-hidden="true" tabindex="-1"></a><span class="im">export</span> <span class="kw">class</span> UserProfileComponent <span class="kw">implements</span> OnInit {</span>
+<span id="cb22-8"><a href="#cb22-8" aria-hidden="true" tabindex="-1"></a>  <span class="kw">private</span> <span class="kw">readonly</span> userService <span class="op">=</span> <span class="fu">inject</span>(UserService)<span class="op">;</span></span>
+<span id="cb22-9"><a href="#cb22-9" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb22-10"><a href="#cb22-10" aria-hidden="true" tabindex="-1"></a>  user<span class="op">:</span> User <span class="op">|</span> <span class="dt">null</span> <span class="op">=</span> <span class="kw">null</span><span class="op">;</span></span>
+<span id="cb22-11"><a href="#cb22-11" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb22-12"><a href="#cb22-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ngOnInit</span>()<span class="op">:</span> <span class="dt">void</span> {</span>
+<span id="cb22-13"><a href="#cb22-13" aria-hidden="true" tabindex="-1"></a>    <span class="kw">this</span><span class="op">.</span><span class="fu">loadUser</span>()<span class="op">;</span></span>
+<span id="cb22-14"><a href="#cb22-14" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb22-15"><a href="#cb22-15" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb22-16"><a href="#cb22-16" aria-hidden="true" tabindex="-1"></a>  <span class="kw">private</span> <span class="fu">loadUser</span>()<span class="op">:</span> <span class="dt">void</span> {</span>
+<span id="cb22-17"><a href="#cb22-17" aria-hidden="true" tabindex="-1"></a>    <span class="kw">this</span><span class="op">.</span><span class="at">userService</span><span class="op">.</span><span class="fu">getCurrentUser</span>()<span class="op">.</span><span class="fu">subscribe</span>({</span>
+<span id="cb22-18"><a href="#cb22-18" aria-hidden="true" tabindex="-1"></a>      next<span class="op">:</span> (user) <span class="kw">=&gt;</span> <span class="kw">this</span><span class="op">.</span><span class="at">user</span> <span class="op">=</span> user<span class="op">,</span></span>
+<span id="cb22-19"><a href="#cb22-19" aria-hidden="true" tabindex="-1"></a>      error<span class="op">:</span> (error) <span class="kw">=&gt;</span> <span class="bu">console</span><span class="op">.</span><span class="fu">error</span>(<span class="st">&#39;Failed to load user:&#39;</span><span class="op">,</span> error)</span>
+<span id="cb22-20"><a href="#cb22-20" aria-hidden="true" tabindex="-1"></a>    })<span class="op">;</span></span>
+<span id="cb22-21"><a href="#cb22-21" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb22-22"><a href="#cb22-22" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
+<h2 id="integration-benefits">Integration Benefits</h2>
+<h3 id="continuous-quality-assurance">Continuous Quality Assurance</h3>
+<ul>
+<li><strong>Automated Checks</strong>: Every push and PR is
+automatically checked</li>
+<li><strong>Early Detection</strong>: Issues caught before code
+review</li>
+<li><strong>Consistent Standards</strong>: Uniform code quality across
+team</li>
+<li><strong>Reduced Technical Debt</strong>: Prevents accumulation of
+formatting issues</li>
+</ul>
+<h3 id="developer-experience">Developer Experience</h3>
+<ul>
+<li><strong>Immediate Feedback</strong>: Quick identification of style
+issues</li>
+<li><strong>Automatic Fixes</strong>: Spotless automatically applies
+formatting</li>
+<li><strong>IDE Integration</strong>: Works with development environment
+linting</li>
+<li><strong>Team Consistency</strong>: All developers follow same
+standards</li>
+</ul>
+<h3 id="code-review-efficiency">Code Review Efficiency</h3>
+<ul>
+<li><strong>Focus on Logic</strong>: Reviewers can focus on
+functionality, not formatting</li>
+<li><strong>Reduced Bikeshedding</strong>: Eliminates style debates</li>
+<li><strong>Cleaner Diffs</strong>: Consistent formatting makes changes
+easier to review</li>
+<li><strong>Professional Appearance</strong>: Well-formatted code looks
+more professional</li>
+</ul>
+<h2 id="workflow-results">Workflow Results</h2>
+<h3 id="success-indicators-1">Success Indicators</h3>
+<p>✅ <strong>Backend Formatting</strong>: Spotless applies formatting
+successfully ✅ <strong>Frontend Linting</strong>: ESLint passes without
+errors ✅ <strong>Code Quality</strong>: All quality checks pass</p>
+<h3 id="failure-indicators-1">Failure Indicators</h3>
+<p>❌ <strong>Spotless Errors</strong>: Java code formatting issues ❌
+<strong>ESLint Errors</strong>: TypeScript/Angular linting violations ❌
+<strong>Build Failures</strong>: Configuration or dependency issues</p>
+<h2 id="error-resolution-1">Error Resolution</h2>
+<h3 id="common-backend-issues">Common Backend Issues</h3>
+<h4 id="spotless-formatting-violations">1. Spotless Formatting
+Violations</h4>
+<div class="sourceCode" id="cb23"><pre
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Error: Code not properly formatted</span></span>
+<span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a><span class="ex">[ERROR]</span> The following files had format violations:</span>
+<span id="cb23-3"><a href="#cb23-3" aria-hidden="true" tabindex="-1"></a><span class="ex">[ERROR]</span>   src/main/java/com/example/UserService.java</span>
+<span id="cb23-4"><a href="#cb23-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb23-5"><a href="#cb23-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Solution: Run Spotless locally</span></span>
+<span id="cb23-6"><a href="#cb23-6" aria-hidden="true" tabindex="-1"></a><span class="ex">mvn</span> spotless:apply</span></code></pre></div>
+<h4 id="import-organization-issues">2. Import Organization Issues</h4>
+<div class="sourceCode" id="cb24"><pre
+class="sourceCode java"><code class="sourceCode java"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="co">// Bad: Unused imports</span></span>
+<span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a><span class="kw">import</span> <span class="im">java</span><span class="op">.</span><span class="im">util</span><span class="op">.</span><span class="im">List</span><span class="op">;</span></span>
+<span id="cb24-3"><a href="#cb24-3" aria-hidden="true" tabindex="-1"></a><span class="kw">import</span> <span class="im">java</span><span class="op">.</span><span class="im">util</span><span class="op">.</span><span class="im">ArrayList</span><span class="op">;</span>  <span class="co">// Unused</span></span>
+<span id="cb24-4"><a href="#cb24-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb24-5"><a href="#cb24-5" aria-hidden="true" tabindex="-1"></a><span class="co">// Good: Clean imports</span></span>
+<span id="cb24-6"><a href="#cb24-6" aria-hidden="true" tabindex="-1"></a><span class="kw">import</span> <span class="im">java</span><span class="op">.</span><span class="im">util</span><span class="op">.</span><span class="im">List</span><span class="op">;</span></span></code></pre></div>
+<h3 id="common-frontend-issues">Common Frontend Issues</h3>
+<h4 id="eslint-rule-violations">1. ESLint Rule Violations</h4>
+<div class="sourceCode" id="cb25"><pre
+class="sourceCode typescript"><code class="sourceCode typescript"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="co">// Error: @typescript-eslint/no-unused-vars</span></span>
+<span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a><span class="kw">const</span> unusedVariable <span class="op">=</span> <span class="st">&#39;value&#39;</span><span class="op">;</span>  <span class="co">// Remove unused variables</span></span>
+<span id="cb25-3"><a href="#cb25-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-4"><a href="#cb25-4" aria-hidden="true" tabindex="-1"></a><span class="co">// Error: prefer-const</span></span>
+<span id="cb25-5"><a href="#cb25-5" aria-hidden="true" tabindex="-1"></a><span class="kw">let</span> constantValue <span class="op">=</span> <span class="st">&#39;never changes&#39;</span><span class="op">;</span>  <span class="co">// Use const instead</span></span>
+<span id="cb25-6"><a href="#cb25-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-7"><a href="#cb25-7" aria-hidden="true" tabindex="-1"></a><span class="co">// Fix</span></span>
+<span id="cb25-8"><a href="#cb25-8" aria-hidden="true" tabindex="-1"></a><span class="kw">const</span> constantValue <span class="op">=</span> <span class="st">&#39;never changes&#39;</span><span class="op">;</span></span></code></pre></div>
+<h4 id="angular-specific-issues">2. Angular-Specific Issues</h4>
+<div class="sourceCode" id="cb26"><pre
+class="sourceCode typescript"><code class="sourceCode typescript"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a><span class="co">// Error: @angular-eslint/component-selector</span></span>
+<span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a>@<span class="fu">Component</span>({</span>
+<span id="cb26-3"><a href="#cb26-3" aria-hidden="true" tabindex="-1"></a>  selector<span class="op">:</span> <span class="st">&#39;userProfile&#39;</span><span class="op">,</span>  <span class="co">// Should use kebab-case</span></span>
+<span id="cb26-4"><a href="#cb26-4" aria-hidden="true" tabindex="-1"></a>  <span class="co">// ...</span></span>
+<span id="cb26-5"><a href="#cb26-5" aria-hidden="true" tabindex="-1"></a>})</span>
+<span id="cb26-6"><a href="#cb26-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-7"><a href="#cb26-7" aria-hidden="true" tabindex="-1"></a><span class="co">// Fix</span></span>
+<span id="cb26-8"><a href="#cb26-8" aria-hidden="true" tabindex="-1"></a>@<span class="fu">Component</span>({</span>
+<span id="cb26-9"><a href="#cb26-9" aria-hidden="true" tabindex="-1"></a>  selector<span class="op">:</span> <span class="st">&#39;app-user-profile&#39;</span><span class="op">,</span></span>
+<span id="cb26-10"><a href="#cb26-10" aria-hidden="true" tabindex="-1"></a>  <span class="co">// ...</span></span>
+<span id="cb26-11"><a href="#cb26-11" aria-hidden="true" tabindex="-1"></a>})</span></code></pre></div>
+<h2 id="local-development-integration">Local Development
+Integration</h2>
+<h3 id="pre-commit-setup">Pre-commit Setup</h3>
+<div class="sourceCode" id="cb27"><pre
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Install pre-commit hooks</span></span>
+<span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a><span class="ex">npm</span> install <span class="at">--save-dev</span> husky lint-staged</span>
+<span id="cb27-3"><a href="#cb27-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb27-4"><a href="#cb27-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Configure package.json</span></span>
+<span id="cb27-5"><a href="#cb27-5" aria-hidden="true" tabindex="-1"></a><span class="kw">{</span></span>
+<span id="cb27-6"><a href="#cb27-6" aria-hidden="true" tabindex="-1"></a>  <span class="st">&quot;husky&quot;</span><span class="ex">:</span> {</span>
+<span id="cb27-7"><a href="#cb27-7" aria-hidden="true" tabindex="-1"></a>    <span class="st">&quot;hooks&quot;</span><span class="ex">:</span> {</span>
+<span id="cb27-8"><a href="#cb27-8" aria-hidden="true" tabindex="-1"></a>      <span class="st">&quot;pre-commit&quot;</span><span class="ex">:</span> <span class="st">&quot;lint-staged&quot;</span></span>
+<span id="cb27-9"><a href="#cb27-9" aria-hidden="true" tabindex="-1"></a>    <span class="kw">}</span></span>
+<span id="cb27-10"><a href="#cb27-10" aria-hidden="true" tabindex="-1"></a>  <span class="er">}</span><span class="ex">,</span></span>
+<span id="cb27-11"><a href="#cb27-11" aria-hidden="true" tabindex="-1"></a>  <span class="st">&quot;lint-staged&quot;</span><span class="ex">:</span> {</span>
+<span id="cb27-12"><a href="#cb27-12" aria-hidden="true" tabindex="-1"></a>    <span class="st">&quot;*.java&quot;</span><span class="ex">:</span> <span class="pp">[</span><span class="st">&quot;mvn spotless:apply&quot;</span><span class="pp">]</span>,</span>
+<span id="cb27-13"><a href="#cb27-13" aria-hidden="true" tabindex="-1"></a>    <span class="st">&quot;*.{ts,js}&quot;</span><span class="ex">:</span> <span class="pp">[</span><span class="st">&quot;eslint --fix&quot;</span><span class="pp">]</span></span>
+<span id="cb27-14"><a href="#cb27-14" aria-hidden="true" tabindex="-1"></a>  <span class="er">}</span></span>
+<span id="cb27-15"><a href="#cb27-15" aria-hidden="true" tabindex="-1"></a><span class="er">}</span></span></code></pre></div>
+<h3 id="ide-configuration">IDE Configuration</h3>
+<h4 id="intellij-idea-java">IntelliJ IDEA (Java)</h4>
+<ul>
+<li>Enable Spotless plugin</li>
+<li>Configure auto-format on save</li>
+<li>Set up code style to match Spotless rules</li>
+</ul>
+<h4 id="vs-code-typescript">VS Code (TypeScript)</h4>
+<ul>
+<li>Install ESLint extension</li>
+<li>Enable auto-fix on save</li>
+<li>Configure workspace settings for consistency</li>
+</ul>
+<h2 id="performance-optimization-1">Performance Optimization</h2>
+<h3 id="caching-strategies">Caching Strategies</h3>
+<ul>
+<li>Cache Node.js dependencies between runs</li>
+<li>Cache Maven dependencies for faster builds</li>
+<li>Use action caching for improved performance</li>
+</ul>
+<h3 id="parallel-execution-1">Parallel Execution</h3>
+<p>Consider splitting into separate jobs for better performance:</p>
+<div class="sourceCode" id="cb28"><pre
+class="sourceCode yaml"><code class="sourceCode yaml"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a><span class="fu">jobs</span><span class="kw">:</span></span>
+<span id="cb28-2"><a href="#cb28-2" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="fu">lint-backend</span><span class="kw">:</span></span>
+<span id="cb28-3"><a href="#cb28-3" aria-hidden="true" tabindex="-1"></a><span class="co">    # Backend linting only</span></span>
+<span id="cb28-4"><a href="#cb28-4" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="fu">lint-frontend</span><span class="kw">:</span></span>
+<span id="cb28-5"><a href="#cb28-5" aria-hidden="true" tabindex="-1"></a><span class="co">    # Frontend linting only</span></span></code></pre></div>
+<h2 id="maintenance-3">Maintenance</h2>
+<h3 id="regular-updates-1">Regular Updates</h3>
+<ul>
+<li><strong>Tool Versions</strong>: Update ESLint, Spotless, and related
+plugins quarterly</li>
+<li><strong>Rule Review</strong>: Periodically review and update linting
+rules</li>
+<li><strong>Performance Monitoring</strong>: Monitor workflow execution
+times</li>
+<li><strong>Team Feedback</strong>: Collect and incorporate developer
+feedback</li>
+</ul>
+<h3 id="configuration-management">Configuration Management</h3>
+<ul>
+<li><strong>Centralized Config</strong>: Maintain linting configurations
+in version control</li>
+<li><strong>Documentation</strong>: Keep linting rules documented and
+accessible</li>
+<li><strong>Training</strong>: Ensure team understands quality
+standards</li>
+<li><strong>Gradual Updates</strong>: Introduce new rules gradually to
+avoid disruption</li>
+</ul>
+<h2 id="best-practices-5">Best Practices</h2>
+<h3 id="rule-selection">Rule Selection</h3>
+<ul>
+<li><strong>Start Conservative</strong>: Begin with basic rules, add
+complexity gradually</li>
+<li><strong>Team Consensus</strong>: Ensure team agrees on style
+decisions</li>
+<li><strong>Tool Integration</strong>: Choose rules that work well with
+development tools</li>
+<li><strong>Performance Impact</strong>: Consider impact on build
+times</li>
+</ul>
+<h3 id="error-handling">Error Handling</h3>
+<ul>
+<li><strong>Clear Messages</strong>: Ensure error messages are helpful
+and actionable</li>
+<li><strong>Documentation</strong>: Provide clear guidance for fixing
+common issues</li>
+<li><strong>Automation</strong>: Use auto-fix capabilities where
+appropriate</li>
+<li><strong>Gradual Enforcement</strong>: Introduce strict rules
+incrementally</li>
+</ul>
+<hr />
+<h1 id="backend-architecture">Backend Architecture</h1>
+<hr />
+<h1 id="database-architecture">Database Architecture</h1>
+<hr />
+<h1 id="frontend-architecture">Frontend Architecture</h1>
+<footer style="margin-top: 3em; padding: 2em 0; border-top: 1px solid #dee2e6; text-align: center; color: #6c757d;">
+  <p>Generated on  | StrengthTracker Documentation</p>
+  <p>
+    <a href="https://github.com/your-username/strengthTracker" style="color: #2767e5;">GitHub Repository</a> |
+    <a href="#TOC" style="color: #2767e5;">Back to Top</a>
+  </p>
+</footer>
+</body>
+</html>
