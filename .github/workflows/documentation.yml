@@ -229,8 +229,7 @@ jobs:
           if [ -d "docs/diagrams" ]; then
             cp -r docs/diagrams html/ 2>/dev/null || true
           fi
-          
-          # Clean up
+            # Clean up
           rm temp_combined.md
 
       - name: Upload individual PDFs
@@ -254,13 +253,6 @@ jobs:
           path: html/
           retention-days: 30
 
-      - name: Deploy to GitHub Pages
-        if: github.ref == 'refs/heads/main' && github.event_name == 'push'
-        uses: peaceiris/actions-gh-pages@v3
-        with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ./html
-
   # Separate job for GitHub Pages deployment with proper permissions
   deploy-pages:
     if: github.ref == 'refs/heads/main' && github.event_name == 'push'
@@ -278,7 +270,7 @@ jobs:
           path: html
 
       - name: Setup Pages
-        uses: actions/configure-pages@v3
+        uses: actions/configure-pages@v4
 
       - name: Upload to GitHub Pages
         uses: actions/upload-pages-artifact@v2
