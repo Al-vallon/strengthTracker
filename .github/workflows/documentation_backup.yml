@@ -223,9 +223,7 @@ jobs:
             --toc-depth=3 \
             -c style.css \
             -M title="StrengthTracker Documentation" \
-            -o html/index.html
-
-          # Copy any images/diagrams to HTML output
+            -o html/index.html          # Copy any images/diagrams to HTML output
           if [ -d "docs/diagrams" ]; then
             cp -r docs/diagrams html/ 2>/dev/null || true
           fi
@@ -270,8 +268,8 @@ jobs:
           name: html-documentation
           path: html
 
-      - name: Setup Pages
-        uses: actions/configure-pages@v5
+            - name: Setup Pages
+        uses: actions/configure-pages@v4
 
       - name: Upload to GitHub Pages
         uses: actions/upload-pages-artifact@v3
