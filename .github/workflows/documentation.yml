@@ -1,0 +1,288 @@
+name: Documentation
+
+on:
+  push:
+    paths:
+      - "docs/**"
+      - ".github/workflows/documentation.yml"
+  pull_request:
+    paths:
+      - "docs/**"
+
+permissions:
+  contents: write
+  pages: write
+  id-token: write
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+
+      - name: Install Pandoc and LaTeX
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y pandoc texlive-latex-base texlive-latex-recommended texlive-latex-extra texlive-xetex texlive-fonts-recommended imagemagick
+
+      - name: Prepare directories
+        run: |
+          mkdir -p pdf html docs/pdfs
+
+      - name: Convert individual markdown files to PDFs
+        run: |
+          # Convert GitHub Actions documentation
+          pandoc docs/github-actions.md \
+            --pdf-engine=xelatex \
+            --toc \
+            --toc-depth=2 \
+            -s \
+            --include-in-header=docs/latex/header.tex \
+            -M title="GitHub Actions Workflows" \
+            -o docs/pdfs/github-actions.pdf
+
+          # Convert workflow documentation
+          find docs/workflows/ -name '*.md' | while read mdfile; do
+            filename=$(basename "$mdfile" .md)
+            pandoc "$mdfile" \
+              --pdf-engine=xelatex \
+              --toc \
+              --toc-depth=2 \
+              -s \
+              --include-in-header=docs/latex/header.tex \
+              -M title="$(echo $filename | sed 's/-/ /g' | sed 's/\b\w/\U&/g')" \
+              -o "docs/pdfs/${filename}.pdf"
+          done
+
+          # Convert architecture documentation
+          if [ -d "docs/architecture" ]; then
+            find docs/architecture/ -name '*.md' | while read mdfile; do
+              filename=$(basename "$mdfile" .md)
+              pandoc "$mdfile" \
+                --pdf-engine=xelatex \
+                --toc \
+                --toc-depth=2 \
+                -s \
+                --include-in-header=docs/latex/header.tex \
+                -M title="$(echo $filename | sed 's/-/ /g' | sed 's/\b\w/\U&/g') Architecture" \
+                -o "docs/pdfs/architecture-${filename}.pdf"
+            done
+          fi
+
+          # Convert main documentation README
+          if [ -f "docs/README.md" ]; then
+            pandoc docs/README.md \
+              --pdf-engine=xelatex \
+              --toc \
+              --toc-depth=2 \
+              -s \
+              --include-in-header=docs/latex/header.tex \
+              -M title="StrengthTracker Documentation Overview" \
+              -o docs/pdfs/documentation-overview.pdf
+          fi
+
+      - name: Create master documentation PDF
+        run: |
+          # Create a temporary markdown file combining all documentation
+          cat > temp_combined.md << 'EOF'
+          # StrengthTracker - Complete Documentation
+          
+          This document contains the complete documentation for the StrengthTracker application.
+          
+          ---
+          
+          EOF
+          
+          # Add main documentation
+          if [ -f "docs/README.md" ]; then
+            echo -e "\n\\newpage\n" >> temp_combined.md
+            echo "# Documentation Overview" >> temp_combined.md
+            echo "" >> temp_combined.md
+            tail -n +2 docs/README.md >> temp_combined.md
+          fi
+          
+          # Add GitHub Actions documentation
+          if [ -f "docs/github-actions.md" ]; then
+            echo -e "\n\\newpage\n" >> temp_combined.md
+            echo "# GitHub Actions Workflows" >> temp_combined.md
+            echo "" >> temp_combined.md
+            tail -n +2 docs/github-actions.md >> temp_combined.md
+          fi
+          
+          # Add workflow documentation
+          if [ -d "docs/workflows" ]; then
+            for mdfile in docs/workflows/*.md; do
+              if [ -f "$mdfile" ] && [ "$(basename "$mdfile")" != "README.md" ]; then
+                echo -e "\n\\newpage\n" >> temp_combined.md
+                filename=$(basename "$mdfile" .md)
+                title=$(echo "$filename" | sed 's/-/ /g' | sed 's/\b\w/\U&/g')
+                echo "# $title Workflow" >> temp_combined.md
+                echo "" >> temp_combined.md
+                tail -n +2 "$mdfile" >> temp_combined.md
+              fi
+            done
+          fi
+          
+          # Add architecture documentation
+          if [ -d "docs/architecture" ]; then
+            for mdfile in docs/architecture/*.md; do
+              if [ -f "$mdfile" ]; then
+                echo -e "\n\\newpage\n" >> temp_combined.md
+                filename=$(basename "$mdfile" .md)
+                title=$(echo "$filename" | sed 's/-/ /g' | sed 's/\b\w/\U&/g')
+                echo "# $title Architecture" >> temp_combined.md
+                echo "" >> temp_combined.md
+                tail -n +2 "$mdfile" >> temp_combined.md
+              fi
+            done
+          fi
+          
+          # Generate master PDF
+          pandoc temp_combined.md \
+            --pdf-engine=xelatex \
+            --toc \
+            --toc-depth=3 \
+            -s \
+            --include-in-header=docs/latex/header.tex \
+            -M title="StrengthTracker - Complete Documentation" \
+            -M author="StrengthTracker Team" \
+            -M date="$(date +'%B %d, %Y')" \
+            -o pdf/strengthtracker-documentation.pdf
+          
+          # Clean up
+          rm temp_combined.md
+
+      - name: Generate HTML documentation
+        run: |
+          # Copy CSS file to output directory
+          cp docs/latex/style.css html/
+
+          # Create combined HTML documentation
+          cat > temp_combined.md << 'EOF'
+          # StrengthTracker Documentation
+          
+          Welcome to the complete documentation for StrengthTracker.
+          
+          ---
+          
+          EOF
+          
+          # Add main documentation
+          if [ -f "docs/README.md" ]; then
+            echo -e "\n---\n" >> temp_combined.md
+            echo "# Documentation Overview" >> temp_combined.md
+            echo "" >> temp_combined.md
+            tail -n +2 docs/README.md >> temp_combined.md
+          fi
+          
+          # Add GitHub Actions documentation
+          if [ -f "docs/github-actions.md" ]; then
+            echo -e "\n---\n" >> temp_combined.md
+            echo "# GitHub Actions Workflows" >> temp_combined.md
+            echo "" >> temp_combined.md
+            tail -n +2 docs/github-actions.md >> temp_combined.md
+          fi
+          
+          # Add workflow documentation
+          if [ -d "docs/workflows" ]; then
+            for mdfile in docs/workflows/*.md; do
+              if [ -f "$mdfile" ] && [ "$(basename "$mdfile")" != "README.md" ]; then
+                echo -e "\n---\n" >> temp_combined.md
+                filename=$(basename "$mdfile" .md)
+                title=$(echo "$filename" | sed 's/-/ /g' | sed 's/\b\w/\U&/g')
+                echo "# $title Workflow" >> temp_combined.md
+                echo "" >> temp_combined.md
+                tail -n +2 "$mdfile" >> temp_combined.md
+              fi
+            done
+          fi
+          
+          # Add architecture documentation
+          if [ -d "docs/architecture" ]; then
+            for mdfile in docs/architecture/*.md; do
+              if [ -f "$mdfile" ]; then
+                echo -e "\n---\n" >> temp_combined.md
+                filename=$(basename "$mdfile" .md)
+                title=$(echo "$filename" | sed 's/-/ /g' | sed 's/\b\w/\U&/g')
+                echo "# $title Architecture" >> temp_combined.md
+                echo "" >> temp_combined.md
+                tail -n +2 "$mdfile" >> temp_combined.md
+              fi
+            done
+          fi
+          
+          # Generate HTML
+          pandoc temp_combined.md \
+            --template=docs/latex/template.html \
+            -s \
+            --toc \
+            --toc-depth=3 \
+            -c style.css \
+            -M title="StrengthTracker Documentation" \
+            -o html/index.html
+
+          # Copy any images/diagrams to HTML output
+          if [ -d "docs/diagrams" ]; then
+            cp -r docs/diagrams html/ 2>/dev/null || true
+          fi
+          
+          # Clean up
+          rm temp_combined.md
+
+      - name: Upload individual PDFs
+        uses: actions/upload-artifact@v4
+        with:
+          name: individual-pdfs
+          path: docs/pdfs
+          retention-days: 30
+
+      - name: Upload master PDF
+        uses: actions/upload-artifact@v4
+        with:
+          name: complete-documentation-pdf
+          path: pdf/strengthtracker-documentation.pdf
+          retention-days: 30
+
+      - name: Upload HTML documentation
+        uses: actions/upload-artifact@v4
+        with:
+          name: html-documentation
+          path: html/
+          retention-days: 30
+
+      - name: Deploy to GitHub Pages
+        if: github.ref == 'refs/heads/main' && github.event_name == 'push'
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./html
+
+  # Separate job for GitHub Pages deployment with proper permissions
+  deploy-pages:
+    if: github.ref == 'refs/heads/main' && github.event_name == 'push'
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    
+    steps:
+      - name: Download HTML documentation
+        uses: actions/download-artifact@v4
+        with:
+          name: html-documentation
+          path: html
+
+      - name: Setup Pages
+        uses: actions/configure-pages@v3
+
+      - name: Upload to GitHub Pages
+        uses: actions/upload-pages-artifact@v2
+        with:
+          path: html
+
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v2

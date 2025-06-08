@@ -1,0 +1,82 @@
+\usepackage{xcolor}
+\usepackage{fancyhdr}
+\usepackage{geometry}
+\usepackage{titlesec}
+\usepackage{tcolorbox}
+\usepackage{fontspec}
+\usepackage{graphicx}
+
+% Page geometry
+\geometry{
+    a4paper,
+    margin=2.5cm,
+    headheight=14pt,
+    headsep=1cm,
+    footskip=1cm
+}
+
+% Colors
+\definecolor{primaryblue}{RGB}{39, 103, 229}
+\definecolor{secondaryblue}{RGB}{66, 139, 202}
+\definecolor{lightgray}{RGB}{248, 249, 250}
+\definecolor{darkgray}{RGB}{52, 58, 64}
+
+% Headers and footers
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[L]{\textcolor{primaryblue}{\textbf{StrengthTracker Documentation}}}
+\fancyhead[R]{\textcolor{darkgray}{\today}}
+\fancyfoot[C]{\textcolor{darkgray}{\thepage}}
+\renewcommand{\headrulewidth}{0.5pt}
+\renewcommand{\footrulewidth}{0pt}
+
+% Title formatting
+\titleformat{\section}
+{\color{primaryblue}\Large\bfseries}
+{\thesection}{1em}{}
+
+\titleformat{\subsection}
+{\color{secondaryblue}\large\bfseries}
+{\thesubsection}{1em}{}
+
+\titleformat{\subsubsection}
+{\color{darkgray}\normalsize\bfseries}
+{\thesubsubsection}{1em}{}
+
+% Code blocks
+\tcbuselibrary{skins,breakable}
+\newtcolorbox{codeblock}{
+    colback=lightgray,
+    colframe=primaryblue,
+    fonttitle=\bfseries,
+    breakable,
+    enhanced,
+    sharp corners,
+    boxrule=0.5pt,
+    left=5pt,
+    right=5pt,
+    top=5pt,
+    bottom=5pt
+}
+
+% Links
+\usepackage{hyperref}
+\hypersetup{
+    colorlinks=true,
+    linkcolor=primaryblue,
+    filecolor=primaryblue,
+    urlcolor=primaryblue,
+    citecolor=primaryblue
+}
+
+% Table formatting
+\usepackage{booktabs}
+\usepackage{longtable}
+\usepackage{array}
+
+% Font settings
+\setmainfont{Arial}
+\setmonofont{Courier New}
+
+% Custom commands
+\newcommand{\strongtracker}{\textcolor{primaryblue}{\textbf{StrengthTracker}}}
