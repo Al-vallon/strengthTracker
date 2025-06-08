@@ -2,6 +2,8 @@ name: Documentation
 
 on:
   push:
+    branches:
+      - main
     paths:
       - "docs/**"
       - ".github/workflows/documentation.yml"
@@ -25,7 +27,7 @@ jobs:
       - name: Install Pandoc and LaTeX
         run: |
           sudo apt-get update
-          sudo apt-get install -y pandoc texlive-latex-base texlive-latex-recommended texlive-latex-extra texlive-xetex texlive-fonts-recommended imagemagick
+          sudo apt-get install -y pandoc texlive-latex-base texlive-latex-recommended texlive-latex-extra texlive-xetex texlive-fonts-recommended imagemagick fonts-liberation
 
       - name: Prepare directories
         run: |
