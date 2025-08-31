@@ -40,7 +40,7 @@ services:
       - strengthTracker-network
   db:
     container_name: strengthTracker-db-dev
-    image: postgres:latest
+    image: postgres
     environment:
       POSTGRES_USER: ${DB_USERNAME}
       POSTGRES_PASSWORD: ${DB_PASSWORD}
