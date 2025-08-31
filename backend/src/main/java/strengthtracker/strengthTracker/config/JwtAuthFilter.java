@@ -39,8 +39,6 @@ public class JwtAuthFilter extends OncePerRequestFilter {
 
     if (authHeader != null && authHeader.startsWith("Bearer ")) {
       token = authHeader.substring(7);
-      System.out.println("JwtAuthFilter called for: " + request.getRequestURI());
-      System.out.println("Authorization header: " + authHeader);
       if (jwtUtil.validateToken(token)) {
         Claims claims = jwtUtil.getClaims(token);
         username = claims.getSubject();
@@ -67,8 +65,7 @@ public class JwtAuthFilter extends OncePerRequestFilter {
 
   private boolean isPublicEndpoint(String requestURI, String method) {
     return ("POST".equals(method) && ("/api/users/login".equals(requestURI) || "/api/users/register".equals(requestURI))) ||
-           requestURI.startsWith("/api/swagger-ui/") ||
-           requestURI.startsWith("/api/v3/api-docs/") ||
-           requestURI.startsWith("/api/swagger/");
+           requestURI.startsWith("/api/swagger-ui") ||
+           requestURI.startsWith("/api/v3/");
   }
 }

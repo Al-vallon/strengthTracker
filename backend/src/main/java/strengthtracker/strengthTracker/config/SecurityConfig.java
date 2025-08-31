@@ -22,7 +22,7 @@ public class SecurityConfig {
             auth ->
                 auth.requestMatchers(HttpMethod.POST, "/api/users/login", "/api/users/register")
                     .permitAll()
-                    .requestMatchers("/api/swagger-ui/**", "/api/v3/api-docs/**")
+                    .requestMatchers("/api/swagger-ui/**", "/api/v3/**")
                     .permitAll()
                     .anyRequest()
                     .authenticated())
