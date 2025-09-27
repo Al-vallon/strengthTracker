@@ -25,14 +25,14 @@ public class JwtAuthFilter extends OncePerRequestFilter {
       @org.springframework.lang.NonNull HttpServletResponse response,
       @org.springframework.lang.NonNull FilterChain filterChain)
       throws ServletException, IOException {
-    
+
     // Skip JWT validation for public endpoints
     String requestURI = request.getRequestURI();
     if (isPublicEndpoint(requestURI, request.getMethod())) {
       filterChain.doFilter(request, response);
       return;
     }
-    
+
     String authHeader = request.getHeader("Authorization");
     String token = null;
     String username = null;
@@ -64,8 +64,9 @@ public class JwtAuthFilter extends OncePerRequestFilter {
   }
 
   private boolean isPublicEndpoint(String requestURI, String method) {
-    return ("POST".equals(method) && ("/api/users/login".equals(requestURI) || "/api/users/register".equals(requestURI))) ||
-           requestURI.startsWith("/api/swagger-ui") ||
-           requestURI.startsWith("/api/v3/");
+    return ("POST".equals(method)
+            && ("/api/users/login".equals(requestURI) || "/api/users/register".equals(requestURI)))
+        || requestURI.startsWith("/api/swagger-ui")
+        || requestURI.startsWith("/api/v3/");
   }
 }
